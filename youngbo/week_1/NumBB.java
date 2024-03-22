@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -25,16 +26,35 @@ public class NumBB {
 
         int ResultTrigger = 0;
 
+        int CorrectInput = 1;
         //Main Phase
         for(int Turn = 1; Turn<=9; Turn++, Strike = 0, Ball = 0)
         {
             System.out.printf("[%d회차 숫자야구]\n", Turn);
             System.out.print("1부터 9까지의 숫자를 입력하세요 : ");
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 3; i++, CorrectInput =1)
             {
-                Player[i] = sc.nextInt();   //Input Data
+                //Input Phase
+                try
+                {
+                    Player[i] = sc.nextInt();
+                    if(Player[i] > 9 || Player[i] < 1)
+                        CorrectInput = 0;
+                }
+                catch(InputMismatchException e)
+                {
+                    CorrectInput = 0;
+                }
 
-                //Check Phase
+                if(CorrectInput == 0)
+                {
+                    System.out.println("[ERROR]1~9의 숫자를 입력해주세요.");
+                    sc.nextLine();
+                    i--;
+                    continue;
+                }
+
+                //Count Phase
                 for(int j = 0; j < 3; j++)
                 {
                     if(Player[i] == Answer[j])
@@ -65,10 +85,10 @@ public class NumBB {
         //End Phase
         switch (ResultTrigger)
         {
-            case 0:
+            case 0: //Lose
                 System.out.printf("패배했습니다. 답 : %d %d %d", Answer[0], Answer[1], Answer[2]);
                 break;
-            case 1:
+            case 1: //Win
                 System.out.printf("승리했습니다.");
                 break;
         }
