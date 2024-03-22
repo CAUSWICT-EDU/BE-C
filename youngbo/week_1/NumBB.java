@@ -67,8 +67,10 @@ public class NumBB {
         {
             case 0:
                 System.out.printf("패배했습니다. 답 : %d %d %d", Answer[0], Answer[1], Answer[2]);
+                break;
             case 1:
                 System.out.printf("승리했습니다.");
+                break;
         }
 
     }
