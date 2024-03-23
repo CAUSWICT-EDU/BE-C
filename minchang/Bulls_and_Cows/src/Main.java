@@ -21,6 +21,7 @@ public class Main {
 
                 try{
                     user_num = scan.nextInt();
+                    
                     if ( user_num < 1 || user_num > 9){ // 숫자가 범위를 벗어난 경우
                         error_code = 2;
                         break;
