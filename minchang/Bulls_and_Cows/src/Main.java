@@ -18,6 +18,7 @@ public class Main {
 
             for (int j = 0; j < 3; ++j){
                 int user_num;
+
                 try{
                     user_num = scan.nextInt();
                     if ( user_num < 1 || user_num > 9){ // 숫자가 범위를 벗어난 경우
