@@ -8,11 +8,11 @@ public class Number {
     //컴퓨터 배열 만들기
     public int[] makeComputerNumber(){
         Random random=new Random();
-        number_array[0]=random.nextInt(10);
+        number_array[0]=random.nextInt(9)+1;
 
         for(int i=1; i<digit;){
             //난수 생성 후 겹치는지 확인
-            int number=random.nextInt(10);
+            int number=random.nextInt(9)+1;
             boolean state=true;
             for(int j=0; j<i;j++){
                 if(number_array[j]==number){
@@ -38,16 +38,16 @@ public class Number {
     public  int[] makeUserNumber(){
         Scanner scanner=new Scanner(System.in);
         for(int i=0; i<digit;){
-            //0~9까지의 정수입력받고 배열에 저장
-            System.out.print("정수(0~9)를 입력하세요: ");
+            //1~9까지의 정수입력받고 배열에 저장
+            System.out.print("정수(1~9)를 입력하세요: ");
             int userInput=scanner.nextInt();
-            if(0<=userInput&&userInput<=9)
+            if(1<=userInput&&userInput<=9)
             {
                 number_array[i]=userInput;
                 i++;
             }
 
-            //0~9까지의 정수입력이 아닐시 다시 입력받음
+            //1~9까지의 정수입력이 아닐시 다시 입력받음
             else{
                 continue;
             }
