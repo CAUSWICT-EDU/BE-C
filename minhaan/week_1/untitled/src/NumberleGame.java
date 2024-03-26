@@ -26,7 +26,7 @@ public class NumberleGame {
         Scanner scanner = new Scanner(System.in);
         int attempts = 0;
 
-        System.out.println("Welcome to Numberle!");
+        System.out.println("Welcome to Guess the number!");
         System.out.println("Guess the 3-digit number.");
         System.out.println("You have " + MAX_ATTEMPTS + " attempts.");
 
