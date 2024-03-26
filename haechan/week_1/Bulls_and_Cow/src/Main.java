@@ -23,6 +23,7 @@ public class Main {
                     break;
                 } else if (N == 0) { // 게임종료
                     System.out.println("게임을 종료합니다.");
+                    return;
                 } else { // 범위를 벗어난 입력
                     System.out.println("1~9사이의 수를 입력해주세요");
                 }
@@ -32,7 +33,7 @@ public class Main {
         }
 
         // 게임 숫자 생성
-        ArrayList<Integer> random_list = new ArrayList<Integer>(); // 랜덤숫자 배열(정답ㅑㄹ)
+        ArrayList<Integer> random_list = new ArrayList<Integer>(); // 랜덤숫자 배열(정답)
         new Random().ints(1, 10).distinct().limit(N).forEach(i -> random_list.add(i));
 
 
@@ -47,6 +48,7 @@ public class Main {
                 // 게임종료
                 if (Integer.parseInt(str) == 0) {
                     System.out.println("게임을 종료합니다.");
+                    return;
                 }
 
                 // 입력 자릿수 체크
