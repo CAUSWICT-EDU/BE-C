@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Scanner;
 public class Number {
-    static int digit=3; //배열의 자릿수: 3자리
+    static int digit=3; //배열의 자릿수
     int[] number_array=new int[digit]; //배열
 
     //컴퓨터 배열 만들기
@@ -11,7 +11,7 @@ public class Number {
         number_array[0]=random.nextInt(9)+1;
 
         for(int i=1; i<digit;){
-            //난수 생성 후 겹치는지 확인.
+            //난수 생성 후 겹치는지 확인
             int number=random.nextInt(9)+1;
             boolean state=true;
             for(int j=0; j<i;j++){
