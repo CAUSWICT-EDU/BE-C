@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -5,13 +7,12 @@ public class Main {
     public static void main(String[] args) {
         Random ramdom = new Random();
         int game=1,Strike,Ball,Out=0;
-        int Win=1,Lose=0;
+        int Win=1,Lose=0,error;
         int Result=Lose; //기본 Result 값을 Lose로 정하여 9회가 모두 끝나버리면 패배할 수 있게 하였습니다.
-        int error;
         int[] Answer = new int[3];
-        int[] guess = new int[3];
+        int[] guesses = new int[3];
         for (int i=0;i<3;i++){
-            Answer[i] = ramdom.nextInt(9);
+            Answer[i] = ramdom.nextInt(9)+1;
             for (int j=0;j<i;j++){
                 if (Answer[i]==Answer[j]) i--; //정답 숫자 세개 중 중복된 수가 나올 경우를 제외하기
             }
@@ -22,22 +23,31 @@ public class Main {
             Ball=0;
             System.out.print("예상 숫자 세 개를 입력하세요 : ");
             for (int i=0;i<3;i++){ //예상 숫자를 세개 입력 받는다
-                error = 0;
+                error=0;
                 try {
-                    guess[i] = scan.nextInt(); /*try 블록에는 예외가 발생할 수 있는 코드가 있어야 한다고 해서 입력받는 부분을 입력하였습니다.
+                    int guess;
+                    guess = scan.nextInt(); /*try 블록에는 예외가 발생할 수 있는 코드가 있어야 한다고 해서 입력받는 부분을 입력하였습니다.
                     '예외가 발생할 수 있는 부분' == '입력을 받을 때 0~9사이가 아닌 다른 값이 들어오는 경우'이기 때문입니다.*/
-                    if (guess[i]<0 || guess[i]>9) error=1; // 0에서 9 사이의 정수가 아니면 에러값이 1이 되도록 하였습니다.
-                }catch (Exception e)
+                    if (guess<0 || guess>9) {
+                        error=1; // 0에서 9 사이의 정수가 아니면 에러값이 1이 되도록 하였습니다.
+                    }
+                    else if (Arrays.stream(guesses).anyMatch(num -> num == guess)) {
+                        error=1; //입력값이 중복되면 에러값이 1이 되도록 하였습니다.
+                    }
+                    guesses[i] = guess;
+                }
+                catch (InputMismatchException e)
                 {
                     error=1; //이외에도 다른 예외들이 발생할 경우 에러값 1이 되도록 하였습니다.
                 }
                 if (error == 1) { //에러값이 1일 경우 다시 입력을 받을 수 있도록 하였습니다.
                     System.out.println("입력 오류 ! 0~9사이 숫자 세 개를 다시 입력해주세요.\n");
+                    scan.nextInt();
                     i--;
                     continue;
                 }
                 for (int j=0;j<3;j++){ //예상숫자 하나와 정답숫자 세 개를 돌아가며 비교한다
-                    if (guess[i]==Answer[j]){
+                    if (guesses[i]==Answer[j]){
                         if(i==j) Strike++;
                         else Ball++;
                     }
