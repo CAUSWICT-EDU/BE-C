@@ -8,9 +8,9 @@ public class baseball {
 
     public static boolean samedata (int[] array, int number, int indexN) { // 중복 숫자 검사
 
-        int index = indexN;
+       // int index = indexN;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == number && i!= index) {
+            if (array[i] == number && i!= indexN) {
                 return true;
             }
         }
@@ -36,13 +36,9 @@ public class baseball {
                 System.out.println("범위에 맞지 않은 입력입니다. 다시 입력해주세요");
                 i--;
             }
-            if (samedata(Uanswer, Uanswer[i],i)){ // 사용자 입력 중복 검사
-                System.out.println("중복된 입력입니다. 처음부터 다시 입력해주세요");
-
-                for (int j = 0; j < Uanswer.length; j++) { //사용자 배열 초기화
-                    Uanswer[j] = 0;
-                }
-                i = -1; // i++가 후에 더해지기 때문에 -1로 넣어줌. 이상하게 ++i는 안 됨...
+            else if (samedata(Uanswer, Uanswer[i],i)){ // 사용자 입력 중복 검사
+                System.out.println("중복된 입력입니다. 다시 입력해주세요");
+                i--;
             }
         }
 
