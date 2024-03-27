@@ -133,5 +133,8 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 
 ---
 
-## 📈 구현할 기능 목록
-- class Game - game
+## 📝 구현할 기능 목록
+- class Game - playGame(), checkAnswer(), printResult()
+- class Computer - makeRandomNumber()
+- class User - enterUserInput()
+- class Exception
