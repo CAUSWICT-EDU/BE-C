@@ -8,7 +8,7 @@ public class Game {
     private int round; // 회차
     private int strike;
     private int ball;
-    private boolean endFlag; // 재시작 or 종료 플래그
+    public boolean endFlag; // 재시작 or 종료 플래그
 
     private static Game game = new Game(); // 싱글톤 패턴
 
@@ -39,8 +39,7 @@ public class Game {
 
     private void setInput() {
         System.out.println("\n숫자를 입력해주세요 : ");
-        //input = changeStringToInteger(user.enterUserInput());
-        input = changeStringToInteger(User.getInstance().enterUserInput());
+        input = User.getInstance().enterUserInput();
     }
 
 
@@ -82,7 +81,7 @@ public class Game {
                 // 기존 정답과 수, 자리 일치하면 strike
                 strike++;
             } else {
-                if(answer.contains(input.get(i))){
+                if(answer.contains(input.get(i))){  // 이것도 indent 3으로 치는걸까..
                     // 자리는 일치 하지 않으나, 그 수가 포함 되어 있으면 ball
                     ball++;
                 }
@@ -106,23 +105,18 @@ public class Game {
         }
     }
 
-    public ArrayList<Integer> changeStringToInteger(String[] arr) {
-        // 숫자 정수 변환 함수
 
-        ArrayList<Integer> arrayInteger = new ArrayList<>();
+    public void restartGame() {
+        // 맞췄거나, 기회 9번을 모두 사용했거나, 예외로 잡혔을 때 호출 됨
 
-        arrayInteger.add(Integer.parseInt(arr[0]));
-        arrayInteger.add(Integer.parseInt(arr[1]));
-        arrayInteger.add(Integer.parseInt(arr[2]));
-
-        return arrayInteger;
-    }
-
-    private void restartGame() {
-        // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
+        String endOrNot = "";
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        if (Console.readLine().equals("1")) {
+        if (endFlag) {
+            endOrNot = Console.readLine();
+        }
+
+        if (endOrNot.equals("1")) {
             Game.getInstance().gameInit();
         } else {
             game = null; // 객체 삭제
