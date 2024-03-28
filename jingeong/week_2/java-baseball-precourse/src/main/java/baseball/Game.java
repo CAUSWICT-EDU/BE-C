@@ -2,12 +2,14 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
     private int round = 1;
 
-    private Computer computer = new Computer();
-    private User user = new User();
+    private static Game game;
+    private final Computer computer = new Computer();
+    private final User user = new User();
 
     private List<Integer> answer;
     private List<Integer> input;
@@ -19,6 +21,10 @@ public class Game {
         input = changeStringToInteger(user.enterUserInput());
 
         playGame();
+    }
+
+    public static Game getInstance() {
+        return game;
     }
 
     private void playGame() {
@@ -39,7 +45,7 @@ public class Game {
             round ++;
         }
 
-        System.out.println(); // 정답 수 출력
+        System.out.println("정답을 맞추지 못하였습니다. 게임 종료\n" + "정답은 " + answer + "\n");
         restartGame();
     }
 
@@ -59,11 +65,13 @@ public class Game {
     private void printResult(int strike, int ball) {
         // 각 라운드마다 결과를 출력해주는 함수
 
-        System.out.println();
-
-
-        if (strike == 3) {
+        if (strike == 0 && ball == 0) {
+            System.out.println("낫싱");
+        } else if (strike == 3) {
+            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             restartGame();
+        } else {
+            System.out.println(ball + "볼 " + strike +"스트라이크");
         }
     }
 
@@ -81,7 +89,11 @@ public class Game {
 
     private void restartGame() {
         // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
+        if (Console.readLine().equals("1")) {
+            game = new Game();
+        }
 
     }
 
