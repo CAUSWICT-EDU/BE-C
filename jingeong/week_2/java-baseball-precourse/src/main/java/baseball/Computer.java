@@ -8,7 +8,8 @@ import java.util.List;
 public class Computer {
 
     public Computer() {
-        makeRandomNumber(); // Computer instance가 생성되는 동시에 난수 생성 함수 호출
+        makeRandomNumber();
+        // Computer instance가 생성되는 동시에 난수 생성 함수 호출
     }
 
     public List<Integer> makeRandomNumber() {

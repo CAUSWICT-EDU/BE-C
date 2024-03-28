@@ -14,9 +14,7 @@ public class Game {
 
     private int[] check = new int[2];
 
-
-
-    public Game() {
+    public Game() throws IllegalStateException {
         answer = computer.makeRandomNumber();
         input = changeStringToInteger(user.enterUserInput());
 
@@ -69,7 +67,7 @@ public class Game {
         }
     }
 
-    private ArrayList<Integer> changeStringToInteger(String[] arr) {
+    public ArrayList<Integer> changeStringToInteger(String[] arr) {
         // 숫자 정수 변환 함수
 
         ArrayList<Integer> arrayInteger = new ArrayList<>();
