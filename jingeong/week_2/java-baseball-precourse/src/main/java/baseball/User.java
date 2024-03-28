@@ -22,13 +22,13 @@ public class User {
         List<Integer> userInputInteger = new ArrayList<>();
 
         try {
-            userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 임포트 후 사용
+            userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
 
             userInputInteger.add(Integer.parseInt(userInput[0]));
             userInputInteger.add(Integer.parseInt(userInput[1]));
             userInputInteger.add(Integer.parseInt(userInput[2]));
 
-            Set<Integer> check = new LinkedHashSet<>(userInputInteger);
+            Set<Integer> check = new LinkedHashSet<>(userInputInteger); // 중복 체크
 
             if (userInput.length != 3) {
                 throw new IllegalArgumentException("세자리 수 입력");
@@ -38,7 +38,7 @@ public class User {
                 throw new IllegalArgumentException("중복 불가");
             }
         } catch (Throwable t) {
-            throw new IllegalStateException(t);
+            throw new IllegalArgumentException(t);
         }
         return userInputInteger;
     }

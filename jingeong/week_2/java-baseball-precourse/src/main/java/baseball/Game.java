@@ -1,6 +1,5 @@
 package baseball;
 
-import java.util.ArrayList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -107,16 +106,11 @@ public class Game {
 
 
     public void restartGame() {
-        // 맞췄거나, 기회 9번을 모두 사용했거나, 예외로 잡혔을 때 호출 됨
+        // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
 
-        String endOrNot = "";
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        if (endFlag) {
-            endOrNot = Console.readLine();
-        }
-
-        if (endOrNot.equals("1")) {
+        if (Console.readLine().equals("1")) {
             Game.getInstance().gameInit();
         } else {
             game = null; // 객체 삭제
