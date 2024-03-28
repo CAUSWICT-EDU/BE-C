@@ -29,8 +29,9 @@ public class Game {
         while(round < 10){
             int strike = 0;
             int ball = 0;
+            // 매 라운드 초기화
 
-            checkAnswer(answer, input);
+            checkAnswer();
 
             strike = check[0];
             ball = check[1];
@@ -44,13 +45,17 @@ public class Game {
         restartGame();
     }
 
-    private void checkAnswer(List<Integer> answer, List<Integer> input) {
+    private void checkAnswer() {
         // 각 라운드마다 결과를 체크해주는 함수
-
-        this.answer = answer;
-        this.input = input;
-
-        //정답과 입력 값 비교 후, strike와 ball 개수를 각각 check 배열에 넣기
+        for (int i = 0; i < 3; i++) {
+            if(input.get(i).equals(answer.get(i))){
+                // 기존 정답과 수, 자리 일치하면 strike
+                check[0]++;
+            } else if(answer.contains(input.get(i))){
+                // 자리는 일치 하지 않으나, 그 수가 포함 되어 있으면 ball
+                check[1]++;
+            }
+        }
     }
 
     private void printResult(int strike, int ball) {
