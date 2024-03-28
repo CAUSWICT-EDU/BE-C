@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     private int round = 1;
@@ -8,15 +9,15 @@ public class Game {
     private Computer computer = new Computer();
     private User user = new User();
 
-    private ArrayList<Integer> answer;
-    private ArrayList<Integer> input;
+    private List<Integer> answer;
+    private List<Integer> input;
 
     private int[] check = new int[2];
 
 
 
     public Game() {
-        answer = changeStringToInteger(computer.makeRandomNumber());
+        answer = computer.makeRandomNumber();
         input = changeStringToInteger(user.enterUserInput());
 
         playGame();
@@ -43,7 +44,7 @@ public class Game {
         restartGame();
     }
 
-    private void checkAnswer(ArrayList<Integer> answer, ArrayList<Integer> input) {
+    private void checkAnswer(List<Integer> answer, List<Integer> input) {
         // 각 라운드마다 결과를 체크해주는 함수
 
         this.answer = answer;
