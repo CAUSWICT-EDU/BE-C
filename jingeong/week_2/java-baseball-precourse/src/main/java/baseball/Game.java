@@ -8,8 +8,8 @@ public class Game {
     private int round = 1;
 
     private static Game game;
-    private final Computer computer = new Computer();
-    private final User user = new User();
+    private static final Computer computer = new Computer();
+    private static final User user = new User();
 
     private List<Integer> answer;
     private List<Integer> input;
@@ -89,12 +89,12 @@ public class Game {
 
     private void restartGame() {
         // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
+        String endFlag = Console.readLine();
+
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
-        if (Console.readLine().equals("1")) {
+        if (endFlag.equals("1")) {
             game = new Game();
         }
-
     }
-
 }
