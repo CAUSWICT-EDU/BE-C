@@ -3,7 +3,9 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Computer {
     private static  Computer computer = new Computer();
@@ -17,10 +19,17 @@ public class Computer {
     }
 
     public List<Integer> makeRandomNumber() {
-        randomNumber = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            randomNumber.add(i, Randoms.pickNumberInRange(1,9));
-            //여기서 중복처리 어떻게 할 지 생각해야 될 듯
+        while (true) {
+            randomNumber = new ArrayList<>();
+            Set<Integer> checkDuplicate;
+            for (int i = 0; i < 3; i++) {
+                randomNumber.add(i, Randoms.pickNumberInRange(1,9));
+                //여기서 중복처리 어떻게 할 지 생각해야 될 듯
+            }
+            checkDuplicate = new LinkedHashSet<>(randomNumber);
+            if (randomNumber.size() == checkDuplicate.size()) {
+                break;
+            }
         }
 
         return randomNumber;

@@ -149,3 +149,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 2. ExceptionInInitializerError 이 에러가 버전 문제인지, 아니면 코드를 잘못짠건지 알기
 3. 예외처리 방식 다시 생각 해보기
 4. 테스트 코드 내가 짜보기
+
+- 03/29
+1. Caused by: org.junit.jupiter.api.AssertTimeout$ExecutionTimeoutException: Execution timed out in thread junit-timeout-thread-1
+- 타임아웃이라는게 무슨 오류인지 찾아봐야 될 것 같다.

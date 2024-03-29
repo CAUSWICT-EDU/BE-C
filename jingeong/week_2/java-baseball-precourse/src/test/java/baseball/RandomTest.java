@@ -22,8 +22,6 @@ public class RandomTest {
         System.out.println(random);
         Set<Integer> duple = new LinkedHashSet<>(random);
         assertThat(duple.size()).isEqualTo(random.size());
-
-
     }
 }
 
