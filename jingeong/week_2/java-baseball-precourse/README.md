@@ -147,9 +147,12 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 03/28
 1. pickNumberInRange()로 랜덤 숫자 뽑기 다시 구현
 2. ExceptionInInitializerError 이 에러가 버전 문제인지, 아니면 코드를 잘못짠건지 알기
+--> 왜 발생하는지 잘 모르겠는데, 이거 때문에 IllegalArgumentException로 던진 예외처리 메세지가 출력이 잘 안되는듯
+--> 이거 자체도 IllegalArgumentException로 잡으니 테스트 통과는 됐으나.. 근본적인 해결책은 잘 모르겠다.
 3. 예외처리 방식 다시 생각 해보기
 4. 테스트 코드 내가 짜보기
 
 - 03/29
 1. Caused by: org.junit.jupiter.api.AssertTimeout$ExecutionTimeoutException: Execution timed out in thread junit-timeout-thread-1
 - 타임아웃이라는게 무슨 오류인지 찾아봐야 될 것 같다.
+--> 그냥 문제 측에서 원한 방식이 아니고, 더 시간복잡도를 줄일 방법을 찾아 봐야 할듯?

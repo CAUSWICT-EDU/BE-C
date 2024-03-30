@@ -1,10 +1,8 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 public class User {
     private static User user = new User();
@@ -18,27 +16,27 @@ public class User {
     }
 
     public List<Integer> enterUserInput() {
-        String[] userInput;
+        //String[] userInput;
         List<Integer> userInputInteger = new ArrayList<>();
+        List<String> userInput = new ArrayList<>();
 
         try {
-            userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
+            //userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
+            userInput = Arrays.asList(Console.readLine().trim().split(""));
 
-            userInputInteger.add(Integer.parseInt(userInput[0]));
-            userInputInteger.add(Integer.parseInt(userInput[1]));
-            userInputInteger.add(Integer.parseInt(userInput[2]));
+            userInputInteger.add(Integer.parseInt(userInput.get(0)));
+            userInputInteger.add(Integer.parseInt(userInput.get(1)));
+            userInputInteger.add(Integer.parseInt(userInput.get(2)));
 
-            Set<Integer> check = new LinkedHashSet<>(userInputInteger); // 중복 체크
-
-            if (userInput.length != 3) {
+            if (userInput.size() != 3) {
                 throw new IllegalArgumentException("세자리 수 입력");
-            } else if (userInputInteger.contains(0)) {
+            } else if (userInput.contains("0")) {
                 throw new IllegalArgumentException("범위 1~9");
-            } else if (check.size() < 3) {
+            } else if (userInput.stream().distinct().count() != 3) {
                 throw new IllegalArgumentException("중복 불가");
             }
-        } catch (Throwable t) {
-            throw new IllegalArgumentException(t);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("정수 입력");
         }
         return userInputInteger;
     }

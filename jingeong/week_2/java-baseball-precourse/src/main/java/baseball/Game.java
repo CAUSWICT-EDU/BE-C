@@ -107,7 +107,6 @@ public class Game {
 
     public void restartGame() {
         // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
-
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
 
         if (Console.readLine().equals("1")) {
