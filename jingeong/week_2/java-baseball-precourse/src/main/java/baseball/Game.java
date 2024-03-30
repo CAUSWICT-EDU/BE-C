@@ -8,24 +8,14 @@ public class Game {
     private int strike;
     private int ball;
     public boolean endFlag; // 재시작 or 종료 플래그
-
-    public static Game game = new Game(); // 싱글톤 패턴
+    private boolean gameEnd = false;
 
     private List<Integer> answer;
     private List<Integer> input;
+    private Game game;
 
     private int[] check;
 
-    public Game() {
-        gameInit(); // 새로운 판이 시작 됐을 때 기본 설정
-    }
-
-    public static Game getInstance() { // 판이 재시작 됐을 때, 기존 객체 재사용 가능
-        if (game == null) {
-            game = new Game();
-        }
-        return game;
-    }
 
     public void gameInit() {
         round = 1;
@@ -42,7 +32,7 @@ public class Game {
     }
 
 
-    private void playGame() {
+    private void playGame() throws IllegalArgumentException{
         // 라운드를 진행하는 함수
 
         while(round < 10){
@@ -97,7 +87,7 @@ public class Game {
         if (strike == 0 && ball == 0) {
             System.out.println("낫싱");
         } else if (strike == 3) {
-            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            System.out.println("3스트라이크\n" + "3개의 숫자를 모두 맞히셨습니다!" + "게임 종료");
             endFlag = true;
         } else {
             System.out.println(ball + "볼 " + strike +"스트라이크");
@@ -105,14 +95,20 @@ public class Game {
     }
 
 
-    public void restartGame() {
+    public void restartGame() throws IllegalArgumentException{
         // 맞췄거나, 기회 9번을 모두 사용했을 때 호출됨
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        String end = Console.readLine().trim();
 
-        if (Console.readLine().equals("1")) {
-            Game.getInstance().gameInit();
-        } else {
-            game = null; // 객체 삭제
+        if (end.equals("1")) {
+            gameInit();
+        } else if (end.equals("2")) {
+            gameEnd = true;
+            this.gameEnd();
         }
+    }
+
+    public boolean gameEnd() {
+        return gameEnd;
     }
 }

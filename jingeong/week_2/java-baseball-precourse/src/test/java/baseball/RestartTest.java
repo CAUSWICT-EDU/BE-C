@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RestartTest {
+    Game game = new Game();
 
     private final InputStream systemIn = System.in;
     private ByteArrayInputStream testIn;
@@ -33,7 +34,7 @@ class RestartTest {
 
         // Start the game
         try {
-            Game game = Game.getInstance();
+            game.gameInit();
             // Simulate end of the game
             game.endFlag = true;
 
@@ -53,7 +54,7 @@ class RestartTest {
             game.restartGame();
 
             // Check if the game object is deleted
-            assertNull(Game.game); // Game object should be null after inputting anything other than '1'
+            assertNull(game); // Game object should be null after inputting anything other than '1'
         } catch (ExceptionInInitializerError e) {
             System.out.println("진행시켜");
         }

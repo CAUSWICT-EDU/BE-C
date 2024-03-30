@@ -18,19 +18,14 @@ public class Computer {
     }
 
     public List<Integer> makeRandomNumber() {
-        randomNumber = Arrays.asList(0,0,0);
+        Set<Integer> check = new LinkedHashSet<>();
 
-        while (true) {
-            for (int i = 0; i < 3; i++) {
-                randomNumber.set(i, Randoms.pickNumberInRange(1,9));
-            }
-            if (randomNumber.stream().distinct().count() == 3) { // 중복 제거 처리
-                break;
-            }
+        while (check.size() < 3) {
+            check.add(Randoms.pickNumberInRange(1,9));
         }
+        randomNumber = new ArrayList<>(check);
+
 
         return randomNumber;
     }
-
-
 }

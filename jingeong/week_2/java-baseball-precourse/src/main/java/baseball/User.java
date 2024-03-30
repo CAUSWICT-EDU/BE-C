@@ -18,7 +18,7 @@ public class User {
     public List<Integer> enterUserInput() {
         //String[] userInput;
         List<Integer> userInputInteger = new ArrayList<>();
-        List<String> userInput = new ArrayList<>();
+        List<String> userInput;
 
         try {
             //userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
@@ -36,6 +36,8 @@ public class User {
                 throw new IllegalArgumentException();
             }
         } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        } catch (ExceptionInInitializerError e) {
             throw new IllegalArgumentException();
         }
         return userInputInteger;
