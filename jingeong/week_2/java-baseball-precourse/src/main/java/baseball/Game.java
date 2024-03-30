@@ -4,12 +4,12 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Game {
-    private int round; // 회차
+    public int round; // 회차
     private int strike;
     private int ball;
     public boolean endFlag; // 재시작 or 종료 플래그
 
-    private static Game game = new Game(); // 싱글톤 패턴
+    public static Game game = new Game(); // 싱글톤 패턴
 
     private List<Integer> answer;
     private List<Integer> input;
@@ -27,7 +27,7 @@ public class Game {
         return game;
     }
 
-    private void gameInit() {
+    public void gameInit() {
         round = 1;
         answer = Computer.getInstance().makeRandomNumber();
 

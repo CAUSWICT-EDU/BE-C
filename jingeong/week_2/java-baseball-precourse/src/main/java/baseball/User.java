@@ -29,14 +29,14 @@ public class User {
             userInputInteger.add(Integer.parseInt(userInput.get(2)));
 
             if (userInput.size() != 3) {
-                throw new IllegalArgumentException("세자리 수 입력");
+                throw new IllegalArgumentException();
             } else if (userInput.contains("0")) {
-                throw new IllegalArgumentException("범위 1~9");
+                throw new IllegalArgumentException();
             } else if (userInput.stream().distinct().count() != 3) {
-                throw new IllegalArgumentException("중복 불가");
+                throw new IllegalArgumentException();
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수 입력");
+            throw new IllegalArgumentException();
         }
         return userInputInteger;
     }

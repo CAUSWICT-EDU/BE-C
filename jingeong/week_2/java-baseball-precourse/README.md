@@ -156,3 +156,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 1. Caused by: org.junit.jupiter.api.AssertTimeout$ExecutionTimeoutException: Execution timed out in thread junit-timeout-thread-1
 - 타임아웃이라는게 무슨 오류인지 찾아봐야 될 것 같다.
 --> 그냥 문제 측에서 원한 방식이 아니고, 더 시간복잡도를 줄일 방법을 찾아 봐야 할듯?
+
+- 03/30
+1. 재시작 함수 수행시, 2를 눌렀을 때 종료가 잘 되는 것 같으면서도 가끔씩 한번 종료가 안되고 계속 플레이 될 때가 있음
+--> 단순 오류인지 아니면 뭔가 잘못됐는지 모르겠음.

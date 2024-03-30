@@ -24,7 +24,7 @@ public class Computer {
             for (int i = 0; i < 3; i++) {
                 randomNumber.set(i, Randoms.pickNumberInRange(1,9));
             }
-            if (randomNumber.stream().distinct().count() == 3) {
+            if (randomNumber.stream().distinct().count() == 3) { // 중복 제거 처리
                 break;
             }
         }
