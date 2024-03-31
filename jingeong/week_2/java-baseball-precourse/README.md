@@ -166,6 +166,11 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 2. 재시작 함수 문제가 아니라, 그냥 ExceptionInInitializerError 이거 문제인듯 하다... 이걸 어떻게 하지.
 3. 테스트 코드에서 IllegalArgumentException 이 예외가 뜨는데, ExceptionInInitializerError를 여기로 던져서 뜨는듯
 --> 엥 Application에서 ExceptionInInitializerError를 다시 안던지고 바로 catch 했더니 해결 됐다.
---> 이렇게 하니까 예외처리 테스트 코드에서 막힘
+--> 이렇게 하니까 예외 테스트 코드에서 막힘
 4. 예외 test에서는 IllegalArgumentException 이게 던져져야 함
 --> 던져져야 되는데 ExceptionInInitializerError여기서 캐치를 해버리니까 에러가 남
+
+- 03/31
+1. 결론적으로 ExceptionInInitializerError 에러는 싱글톤 패턴 사용할 때, 객체 얻어오는 과정에서 생성자 생성실패 문제로 초기화 안돼서 에러가 난다..
+--> 싱글톤 개체가 오류 없이 생성된다는 보장이 필요하다는데, 내가 Application에서 try-catch를 해서 예외를 잡아서 생겼나..?
+--> ExceptionInInitializerError가 왜 생겼는지 모르겠음, 처음이랑 똑같이 한거 같은데 다시 싱글톤으로 돌리니까 지금은 안생김.

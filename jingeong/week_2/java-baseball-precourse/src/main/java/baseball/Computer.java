@@ -8,8 +8,6 @@ import java.util.stream.Stream;
 
 public class Computer {
     private static  Computer computer = new Computer();
-    private List<Integer> randomNumber;
-
     public static Computer getInstance() { // 싱글톤 패턴
         if (computer == null) {
             computer = new Computer();
@@ -19,6 +17,8 @@ public class Computer {
 
     public List<Integer> makeRandomNumber() {
         Set<Integer> check = new LinkedHashSet<>();
+        List<Integer> randomNumber;
+
 
         while (check.size() < 3) {
             check.add(Randoms.pickNumberInRange(1,9));
