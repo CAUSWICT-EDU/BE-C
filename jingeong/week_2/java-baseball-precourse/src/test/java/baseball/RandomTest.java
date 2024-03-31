@@ -1,10 +1,11 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +19,7 @@ public class RandomTest {
 
     @Test
     void duplicated() {
-        List<Integer> random = new ArrayList<>(Computer.getInstance().makeRandomNumber());
+        ArrayList<Integer> random = new ArrayList<>(Computer.getInstance().makeRandomNumber());
         System.out.println(random);
         Set<Integer> duple = new LinkedHashSet<>(random);
         assertThat(duple.size()).isEqualTo(random.size());

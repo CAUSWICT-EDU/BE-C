@@ -2,9 +2,11 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 
 public class Computer {
     private static  Computer computer = new Computer();
