@@ -134,7 +134,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 ---
 
 ## 📝 구현할 기능 목록
-- class Game - gameInit(), playGame(), checkAnswer(), printResult(), restartGame(), changeStringToInteger()
+- class Game - gameInit(), playGame(), checkAnswer(), printResult(), restartGame()
 - class Computer - makeRandomNumber()
 - class User - enterUserInput()
 - class Exception
@@ -157,16 +157,20 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 타임아웃이라는게 무슨 오류인지 찾아봐야 될 것 같다.
 --> 그냥 문제 측에서 원한 방식이 아니고, 더 시간복잡도를 줄일 방법을 찾아 봐야 할듯?
 --> 테스트가 restart 함수에서 계속 종료되는거 보면, 이 로직에 뭔가 문제가.. 있다
---> 그냥 restart 할 때 else if 하고 2 입력 따로 처리 안해주고 else로 퉁쳐서 에러난거임
+--> 그냥 restart 할 때 else if 하고 2 입력 따로 처리 안해주고 else로 퉁쳐서 에러난거였다...
 
 - 03/30
 1. 재시작 함수 수행시, 2를 눌렀을 때 종료가 잘 되는 것 같으면서도 가끔씩 한번 종료가 안되고 계속 플레이 될 때가 있음
 --> 단순 오류인지 아니면 뭔가 잘못됐는지 모르겠음.
 --> 테스트 코드 돌려보니 잘 삭제 되는데... 흠
+--> 단순 오류인듯?
+
 2. 재시작 함수 문제가 아니라, 그냥 ExceptionInInitializerError 이거 문제인듯 하다... 이걸 어떻게 하지.
+
 3. 테스트 코드에서 IllegalArgumentException 이 예외가 뜨는데, ExceptionInInitializerError를 여기로 던져서 뜨는듯
 --> 엥 Application에서 ExceptionInInitializerError를 다시 안던지고 바로 catch 했더니 해결 됐다.
 --> 이렇게 하니까 예외 테스트 코드에서 막힘
+
 4. 예외 test에서는 IllegalArgumentException 이게 던져져야 함
 --> 던져져야 되는데 ExceptionInInitializerError여기서 캐치를 해버리니까 에러가 남
 

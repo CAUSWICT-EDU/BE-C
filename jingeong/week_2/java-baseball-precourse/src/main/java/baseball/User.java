@@ -2,11 +2,12 @@ package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class User {
     private static User user = new User();
-    private Game game;
 
     public static User getInstance() { // 싱글톤 패턴
         if (user == null) {
@@ -16,13 +17,12 @@ public class User {
     }
 
     public List<Integer> enterUserInput() {
-        //String[] userInput;
-        List<Integer> userInputInteger = new ArrayList<>();
+
         List<String> userInput;
+        List<Integer> userInputInteger = new ArrayList<>();
 
         try {
-            //userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
-            userInput = Arrays.asList(Console.readLine().trim().split(""));
+            userInput = Arrays.asList(Console.readLine().trim().split("")); // 주어진 라이브러리 사용
 
             userInputInteger.add(Integer.parseInt(userInput.get(0)));
             userInputInteger.add(Integer.parseInt(userInput.get(1)));
