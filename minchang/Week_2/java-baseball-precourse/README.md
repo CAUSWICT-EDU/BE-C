@@ -126,9 +126,9 @@
 ---
 
 ## 📈 구현할 기능 목록
-- Game : gameInit(), startGame(), stopGame(), resetGame(), checkAnswer(), printResult()
-- Player : inputNums(), checkException()
-- Computer : getRandNums()
+- Game : gameInit(), setGame, startGame(), resetGame(), checkAnswer(), printResult(), endGame()
+- Player : input(), inputNums(), getNums(), checkException(), convertStringToNums()
+- Computer : randNums(), getNums()
 
 <br>
 
