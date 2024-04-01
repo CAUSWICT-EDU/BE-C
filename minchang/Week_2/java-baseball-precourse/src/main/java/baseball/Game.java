@@ -82,7 +82,7 @@ public class Game {
             player.inputNums(size);
 
             Result result = checkAnswer(player, computer);
-            printAnswer(result);
+            printResult(result);
 
             if(endGame(result, roundCurr))
                 break;
@@ -109,7 +109,7 @@ public class Game {
         return result;
     }
 
-    private void printAnswer(Result result){
+    private void printResult(Result result){
         if (result.ball > 0){
             System.out.printf("%d볼 \n", result.ball);
         }
