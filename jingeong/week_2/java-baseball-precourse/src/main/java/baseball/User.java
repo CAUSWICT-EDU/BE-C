@@ -6,38 +6,40 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class User {
-    private static User user = new User();
+public class User {  // 유저는 instance가 여러개인게 맞는거 같아서 싱글톤 제거
 
-    public static User getInstance() { // 싱글톤 패턴
-        if (user == null) {
-            user = new User();
-        }
-        return user;
+    private List<String> userInput;
+    private List<Integer> userInputInteger;
+
+    public List<Integer> getUserInputInteger() {
+        enterUserInput();
+        return userInputInteger;
     }
 
-    public List<Integer> enterUserInput() {
+    public List<String> getUserInput() {
+        return userInput;
+    }
 
-        List<String> userInput;
-        List<Integer> userInputInteger = new ArrayList<>();
+    private void enterUserInput() {
 
+        userInput = Arrays.asList(Console.readLine().trim().split("")); // 주어진 라이브러리 사용
+
+        if (Validate.isValidate(this)) {
+            stringToInteger();
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void stringToInteger() {
+        userInputInteger = new ArrayList<>();
         try {
-            userInput = Arrays.asList(Console.readLine().trim().split("")); // 주어진 라이브러리 사용
-
             userInputInteger.add(Integer.parseInt(userInput.get(0)));
             userInputInteger.add(Integer.parseInt(userInput.get(1)));
             userInputInteger.add(Integer.parseInt(userInput.get(2)));
-
-            if (userInput.size() != 3) {
-                throw new IllegalArgumentException("세자리 수 입력");
-            } else if (userInput.contains("0")) {
-                throw new IllegalArgumentException("범위 1~9");
-            } else if (userInput.stream().distinct().count() != 3) {
-                throw new IllegalArgumentException("중복 입력 불가");
-            }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("정수만 입력");
+            throw new IllegalArgumentException();
         }
-        return userInputInteger;
     }
+
 }

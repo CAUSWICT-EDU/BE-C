@@ -13,6 +13,7 @@ public class Game {
     private List<Integer> input;  // 유저 인풋 리스트
 
     private static Game game; // 싱글톤 패턴을 위한 객체 변수
+    private static final User user = new User();
 
 
     public static Game getInstance() { // 싱글톤 패턴
@@ -26,31 +27,20 @@ public class Game {
         // 매 게임 시작 시, 기본적으로 초기화 되어야 할 정보
 
         round = 1;
-        answer = Computer.getInstance().makeRandomNumber();
+        answer = Computer.getInstance().getRandomNumber();
 
         System.out.println(answer); // 난수 확인용
 
         playGame();
     }
 
-    private void setInput() {
-        // 유저 인풋 세팅
-
-        System.out.println("\n숫자를 입력해주세요 : ");
-        input = User.getInstance().enterUserInput();
-    }
-
-
     private void playGame() {
         // 라운드를 진행하는 함수
 
-        while(round < 10){
+        while(OutOfRound()){
             setInput(); // 입력 받기
 
-            endFlag = false;
-            strike = 0;
-            ball = 0;
-            // 매 라운드 초기화
+            setRound(); // 매 라운드 초기화
 
             checkAnswer(); // strike, ball 개수 체크
 
@@ -64,6 +54,28 @@ public class Game {
             round ++;
         }
 
+        OutOfRound(round);
+    }
+
+
+    private void setInput() {
+        // 유저 인풋 세팅
+        System.out.println("\n숫자를 입력해주세요 : ");
+
+        input = user.getUserInputInteger();
+    }
+
+    private void setRound() {
+        endFlag = false;
+        strike = 0;
+        ball = 0;
+    }
+
+    private boolean OutOfRound() {
+        return round < 10;
+    }
+
+    private void OutOfRound(int round) {  //Overloading
         if (round == 10) {
             System.out.println("정답을 맞추지 못하였습니다. 게임 종료\n"
                     + "정답은 " + answer.get(0).toString() + answer.get(1).toString() + answer.get(2).toString() + "\n");
@@ -71,6 +83,8 @@ public class Game {
             restartGame();
         }
     }
+
+
 
     private void checkAnswer() {
         // 각 라운드마다 결과를 체크해주는 함수

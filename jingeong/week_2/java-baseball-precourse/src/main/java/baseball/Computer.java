@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Computer {
     private static  Computer computer = new Computer();
+    private List<Integer> randomNumber;
     public static Computer getInstance() { // 싱글톤 패턴
         if (computer == null) {
             computer = new Computer();
@@ -17,9 +18,14 @@ public class Computer {
         return computer;
     }
 
-    public List<Integer> makeRandomNumber() {
-        Set<Integer> check = new LinkedHashSet<>();
+    public List<Integer> getRandomNumber() {
+        this.randomNumber = makeRandomNumber();
+        return randomNumber; // random number는 public보다 private이 맞는거 같아서 getter 추가
+    }
+
+    private List<Integer> makeRandomNumber() {
         List<Integer> randomNumber;
+        Set<Integer> check = new LinkedHashSet<>();
 
 
         while (check.size() < 3) {
