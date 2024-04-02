@@ -10,30 +10,34 @@ public class Main {
         int N; // 숫자야구 자릿수
         int Cnt = 0; // 시도 횟수
 
-        // 게임시작
-        System.out.println("숫자야구게임을 시작합니다. \n자릿수(1~9)를 입력하거나 0을 입력하여 종료하세요.");
+        // 게임시작 및 난이도 설정
+        // 숫자야구 게임은 3자리 수를 맞추는 것이 일반적이지만 1~9자리 수 또한 숫자야구게임이 가능하므로 난이도 선택기능을 제공함
+        System.out.println("숫자야구게임을 시작합니다.");
+        System.out.println("종료하시러면 0을 입력하세요.");
+        System.out.println("____________________________________");
+        System.out.println("난이도: 맞추실 숫자의 자릿수(1~9)를 입력해주세요.");
 
         while (true) {
             Scanner sc = new Scanner(System.in);
             try {
                 N = sc.nextInt();
-                if (1 <= N && N <= 9) { //정상적인 입력
+                if (1 <= N && N <= 9) { //정상적인 입력일 경우 게임진행
                     System.out.println(N + "자리 숫자야구게임을 시작합니다.");
                     System.out.println("____________________________________");
                     break;
-                } else if (N == 0) { // 게임종료
+                } else if (N == 0) { // 0을 입력했으므로 게임종료
                     System.out.println("게임을 종료합니다.");
                     return;
-                } else { // 범위를 벗어난 입력
+                } else { // 범위를 벗어난 입력으로 재입력 받기
                     System.out.println("1~9사이의 수를 입력해주세요");
                 }
             } catch (Exception e) { // 예외(String 입력이 들어왔을 경우 등)
-                System.out.println("올바르지 않은 입력입니다. 다시 작성해주세요.");
+                System.out.println("잘못된 입력입니다. 수를 입력해주세요.");
             }
         }
 
         // 게임 숫자 생성
-        ArrayList<Integer> random_list = new ArrayList<Integer>(); // 랜덤숫자 배열(정답)
+        ArrayList<Integer> random_list = new ArrayList<Integer>(); // 랜덤숫자 배열(정답값)
         new Random().ints(1, 10).distinct().limit(N).forEach(i -> random_list.add(i));
 
 
