@@ -128,3 +128,21 @@
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
+
+<br>
+
+---
+
+## 📈 구현할 기능 목록
+class GameMaster - 숫자야구 게임의 시동, 종료 등 동작을 총괄한다
+  getGM() : GM 객체를 생성한다.
+  judgeEnding() : 프로그램의 종료/재실행 여부를 결정한다
+
+class NumBaseBall - 숫자야구 본체
+  setAnswer() : 숫자야구의 답을 설정
+  beginGame() : 설정된 정보를 바탕으로 메인 게임을 진행한다
+
+class Refree - 사용자에게 받은 입력에 따라 판정을 내린다 
+  recieveAnswer() : 사용자로부터 입력을 받는다
+  refineAnswer() : 입력을 가공하기 편한 형태로 정제한다
+  printResult() : 결과를 판정해 출력한다
