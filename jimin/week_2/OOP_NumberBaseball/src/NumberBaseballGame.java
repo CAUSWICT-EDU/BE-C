@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class NumberBaseballGame {
@@ -39,24 +40,30 @@ public class NumberBaseballGame {
         scan.close();
     }
 
-    private static int getDifficultyChoice() {
+    public static int getDifficultyChoice() {
         /* 원래 이 객체도 "GameLogic"안에 담으려고 했지만
         "Scanner"를 "Import"하는 과정은 한 번만 일어나는 것이 더 좋을 듯해
         부득이하게 "GameLogic"대신 "Main"아래에 담았습니다
         보통은 어떻게 하는지 모르겠어서 일단 이렇게 둡니다
         조언부탁드립니다
         */
-        int choice;
-        while (true) {
+        int choice = 0;
+        boolean Valid_choice = false;
+
+        while (!Valid_choice) {
+            System.out.print("\n플레이할 난이도를 정수로 입력해주세요.");
             try {
-                System.out.print("\n플레이할 난이도를 정수로 입력해주세요.\n플레이할 난이도: ");
+                System.out.print("\n플레이할 난이도: ");
                 choice = scan.nextInt();
                 scan.nextLine();
+
                 if (choice < 1 || choice > 3) {
-                    throw new IllegalArgumentException();
+                    throw new InputMismatchException();
                 }
-                break;
-            } catch (IllegalArgumentException e) {
+
+                Valid_choice = true;
+
+            } catch (InputMismatchException e) {
                 System.out.println("잘못된 입력입니다. 1, 2, 3 중 하나를 입력해주세요.");
                 scan.nextLine();
             }
