@@ -145,4 +145,5 @@ class NumBaseBall - 숫자야구 본체
 class Refree - 사용자에게 받은 입력에 따라 판정을 내린다 
   recieveAnswer() : 사용자로부터 입력을 받는다
   refineAnswer() : 입력을 가공하기 편한 형태로 정제한다
+  countResult() : 볼, 스트라이크의 개수를 샌다.
   printResult() : 결과를 판정해 출력한다
