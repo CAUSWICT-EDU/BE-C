@@ -140,6 +140,7 @@ class GameMaster - 숫자야구 게임의 시동, 종료 등 동작을 총괄한
 
 class NumBaseBall - 숫자야구 본체
   setAnswer() : 숫자야구의 답을 설정
+  getAnswer() : 숫자야구의 답을 반환하는 함수
   beginGame() : 설정된 정보를 바탕으로 메인 게임을 진행한다
 
 class Refree - 사용자에게 받은 입력에 따라 판정을 내린다 
