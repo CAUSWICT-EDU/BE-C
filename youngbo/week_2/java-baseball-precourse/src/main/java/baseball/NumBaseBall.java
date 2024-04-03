@@ -19,11 +19,15 @@ public class NumBaseBall {
     }
   }
 
+  public int[] getAnswer() {
+    return this.compAnswer; //컴퓨터가 정한 답을 반환한다.
+  }
+
   public void newGame(GameMaster GM, NumBaseBall NB) {  //새 게임 생성
     Referee rf = new Referee();
     rf.receiveAnswer(); //입력 받기
     rf.refineAnswer();  //정제하기
-    rf.countResult(this.compAnswer);  //스트라이크, 볼 세기
+    rf.countResult(getAnswer());  //스트라이크, 볼 세기
     rf.printResult(GM, NB); //결과 출력
   }
 
