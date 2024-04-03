@@ -8,8 +8,8 @@ public  class Game {
     public Player Player = new Player();
 
     public static int MAX_ROUND = 9; // 최대 라운드
-    public static int NUMS_SIZE = 3;
-    public  int gameRound = 1;
+    public static int NUMS_SIZE = 3; // 숫자야구 수 갯수
+    public  int gameRound = 1; // 게임 라운드
     void start() {
         setup(); // 게임셋업
         //System.out.println(Computer.nums);

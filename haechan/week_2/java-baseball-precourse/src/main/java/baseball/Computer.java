@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 
 public class Computer {
-    ArrayList<Integer> nums = new ArrayList<>(); // 컴퓨터가 정한 3자리 숫자보관
+    ArrayList<Integer> nums = new ArrayList<>(Game.NUMS_SIZE); // 컴퓨터가 정한 3자리 숫자보관
 
     // 중복이 발생하지 않게 NUMS_SIZE개의 수를 생성
     // LinkedHashSet 중복이 발생하지 않고 순서가 보장되는 List

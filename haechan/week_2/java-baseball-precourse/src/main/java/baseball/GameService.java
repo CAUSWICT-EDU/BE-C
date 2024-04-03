@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class GameService {
     int strikeCnt = 0;
     int ballCnt = 0;
-    public ArrayList<Integer> randomNums = new ArrayList<>();
 
      void compareNums(ArrayList<Integer> playerNums, ArrayList<Integer> computerNums) {
         strikeCnt = 0;
@@ -14,6 +13,7 @@ public class GameService {
             getStrikeCnt(computerNums.get(i), playerNums.get(i));
             getBallCnt(computerNums.get(i), playerNums);
         }
+         ballCnt -= strikeCnt;
     }
 
     void printRoundResult() {
@@ -41,7 +41,4 @@ public class GameService {
             }
         }
     }
-
-
-
 }
