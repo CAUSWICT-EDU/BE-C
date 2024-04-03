@@ -144,6 +144,7 @@ class NumBaseBall - 숫자야구 본체
   beginGame() : 설정된 정보를 바탕으로 메인 게임을 진행한다
 
 class Refree - 사용자에게 받은 입력에 따라 판정을 내린다 
+  setCountZero() : 인스턴스의 count를 0으로 초기화한다.
   recieveAnswer() : 사용자로부터 입력을 받는다
   refineAnswer() : 입력을 가공하기 편한 형태로 정제한다
   countResult() : 볼, 스트라이크의 개수를 샌다.
