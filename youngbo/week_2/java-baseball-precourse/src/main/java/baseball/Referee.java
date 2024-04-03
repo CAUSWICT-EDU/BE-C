@@ -6,20 +6,25 @@ public class Referee {
 
   int answerStorage;  //숫자로 변환한 세 자리 수 답을 담아두는 곳
   int strike; //스트라이크  
-  int ball; //볼 
+  int ball; //볼
+  int count = 0;
   int[] userAnswer = new int[3];  //answerStorage의 숫자를 한 자리씩 쪼개서 담은 배열
   String input; //Console.readLine()으로 입력을 받기 위한 저장소
+
+  public void setCountZero() {
+    this.count = 0;
+  }
 
   public void receiveAnswer() {  //유저에게 값을 입력받음, 올바른 값이라면 결과는 세 자리의 정수, answerStorage에 저장됨.
     System.out.print("숫자를 입력해주세요 : ");
     input = Console.readLine();
     if (input.length() != 3) {  //입력이 3글자가 아니면 오류발생
-      throw new IllegalArgumentException("올바른 값을 입력해주세요.\n");
+      throw new IllegalArgumentException("입력이 3글자가 아닙니다. 올바른 값을 입력해주세요.\n");
     }
     try {
       answerStorage = Integer.parseInt(input);
     } catch (NumberFormatException e) { //3글자 중 문자가 있다면 오류 발생
-      throw new IllegalArgumentException("올바른 값을 입력해주세요.\n");
+      throw new IllegalArgumentException("문자가 입력되었습니다. 올바른 값을 입력해주세요.\n");
     }
   }
 
@@ -32,11 +37,12 @@ public class Referee {
 
     if (userAnswer[0] == userAnswer[1] || userAnswer[1] == userAnswer[2]  //중복 숫자가 있다면 오류 발생
         || userAnswer[2] == userAnswer[0]) {
-      throw new IllegalArgumentException("올바른 값을 입력해주세요.\n");
+      throw new IllegalArgumentException("입력 중 중복인 숫자가 있습니다. 올바른 값을 입력해주세요.\n");
     }
   }
 
   public void countResult(int[] compAnswer) { //스트라이크, 볼의 개수를 샌다
+    count++;
     strike = 0;
     ball = 0;
     for (int i = 0; i < 3; i++) {
@@ -55,9 +61,11 @@ public class Referee {
 
   public void printResult(GameMaster GM, NumBaseBall NB) {  //답을 출력한다, 3스트라이크라면 GM.judgeEnding 호출
     if (strike == 3) {
-      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+      System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료 [" + this.count + "]번 걸림");
+      System.out.println(
+          "답: " + NB.getAnswer()[0] + " " + NB.getAnswer()[1] + " " + NB.getAnswer()[2]);
       System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-      GM.judgeEnding(Integer.parseInt(Console.readLine()), NB);
+      GM.judgeEnding(Integer.parseInt(Console.readLine()), NB, this);
     } else if (strike > 0 && ball > 0) {
       System.out.printf("%d볼 %d스트라이크\n", ball, strike);
     } else if (strike > 0 && ball == 0) {
