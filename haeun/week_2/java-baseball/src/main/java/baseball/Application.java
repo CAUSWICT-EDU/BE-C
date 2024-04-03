@@ -5,15 +5,24 @@ public class Application {
     Input Input = new Input();
     CheckAnswer CheckAnswer = new CheckAnswer();
     RandomNumber RandomNumber = new RandomNumber();
+    Reset Reset = new Reset();
+
     RandomNumber.realAnswer(); // 컴퓨터 정답
+    //baseball.CheckAnswer.status = 0;
 
     System.out.println("게임 시작");
-    int c = 0;
-    while(c<9){
+
+    while (true){
       Input.userAnswer();
       CheckAnswer.check();
       CheckAnswer.printResult();
-      c++;
+      Reset.resetting();
+
+      if(baseball.CheckAnswer.status==0){
+        break;
+      }
     }
+
+
   }
 }
