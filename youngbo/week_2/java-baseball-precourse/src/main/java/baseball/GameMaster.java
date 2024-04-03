@@ -11,10 +11,11 @@ public class GameMaster {
     return GM;
   }
 
-  void judgeEnding(int trigger, NumBaseBall NB) {
+  void judgeEnding(int trigger, NumBaseBall NB, Referee RF) {
     switch (trigger) {
       case 1:
-        NB = new NumBaseBall(); //생성자에 숫자 세팅이 달려있음, 숫자 갱신
+        RF.setCountZero(); //refree의 count 초기화
+        NB.setAnswer(); //숫자 갱신
         break;
       case 2:
         System.exit(0);
