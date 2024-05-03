@@ -18,7 +18,7 @@ public class Management {
         for (int i = 0; i < students.size(); i++) {
             StudentGetGrade student = new StudentGetGrade(students.get(i));
             student.getGrade();
-            System.out.println(student.getGradeList());
+            System.out.println(student.getName() + " " + student.getGradeList());
         }
 
 

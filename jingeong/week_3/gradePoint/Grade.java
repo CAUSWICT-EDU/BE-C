@@ -1,4 +1,4 @@
-public interface Grade {
-    String makeGrade(int point);
+public abstract class Grade {
+    abstract String makeGrade();
 
 }

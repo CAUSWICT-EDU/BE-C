@@ -19,8 +19,8 @@ public class StudentDTO {
         this.required = required;
         courseDTO = new CourseDTO[COUR_NUM];
 
-        courseDTO[0] = new CourseDTO("math", mathPoint);
-        courseDTO[1] = new CourseDTO("kor", korPoint);
+        courseDTO[0] = new CourseDTO("수학", mathPoint);
+        courseDTO[1] = new CourseDTO("국어", korPoint);
     }
 
 //    @Override
