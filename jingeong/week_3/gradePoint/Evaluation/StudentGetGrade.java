@@ -1,3 +1,5 @@
+package Evaluation;
+
 import domain.CourseDTO;
 import domain.StudentDTO;
 
@@ -38,10 +40,6 @@ public class StudentGetGrade {
         return course[i].getName().equals(dto.getRequired());
     }
 
-    private void setGrade() {
-
-    }
-
     public String getName() {
         return dto.getStuName();
     }
@@ -65,4 +63,6 @@ public class StudentGetGrade {
     public CourseDTO[] getCourse() {
         return course;
     }
+
+
 }
