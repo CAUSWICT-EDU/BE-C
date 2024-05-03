@@ -20,7 +20,6 @@ public class StudentGetGrade {
         String getGrade;
         for (int i = 0; i < course.length; i++) {
             point = Integer.parseInt(course[i].getPoint());
-            System.out.println(course[i].getName() + dto.getRequired());
             if (course[i].getName().equals(dto.getRequired())) {
                 Grade level = new Required(point);
                 getGrade = level.makeGrade();
@@ -52,5 +51,9 @@ public class StudentGetGrade {
 
     public HashMap<Integer, String> getGradeList() {
         return gradeList;
+    }
+
+    public CourseDTO[] getCourse() {
+        return course;
     }
 }
