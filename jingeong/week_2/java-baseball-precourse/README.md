@@ -134,7 +134,7 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 ---
 
 ## 📝 구현할 기능 목록
-- class Game - gameInit(), playGame(), checkAnswer(), printResult(), restartGame(), changeStringToInteger()
+- class Game - gameInit(), playGame(), checkAnswer(), printResult(), restartGame()
 - class Computer - makeRandomNumber()
 - class User - enterUserInput()
 - class Exception
@@ -147,5 +147,34 @@ This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blo
 - 03/28
 1. pickNumberInRange()로 랜덤 숫자 뽑기 다시 구현
 2. ExceptionInInitializerError 이 에러가 버전 문제인지, 아니면 코드를 잘못짠건지 알기
+--> 왜 발생하는지 잘 모르겠는데, 이거 때문에 IllegalArgumentException로 던진 예외처리 메세지가 출력이 잘 안되는듯
+--> 이거 자체도 IllegalArgumentException로 잡으니 테스트 통과는 됐으나.. 근본적인 해결책은 잘 모르겠다.
 3. 예외처리 방식 다시 생각 해보기
 4. 테스트 코드 내가 짜보기
+
+- 03/29
+1. Caused by: org.junit.jupiter.api.AssertTimeout$ExecutionTimeoutException: Execution timed out in thread junit-timeout-thread-1
+- 타임아웃이라는게 무슨 오류인지 찾아봐야 될 것 같다.
+--> 그냥 문제 측에서 원한 방식이 아니고, 더 시간복잡도를 줄일 방법을 찾아 봐야 할듯?
+--> 테스트가 restart 함수에서 계속 종료되는거 보면, 이 로직에 뭔가 문제가.. 있다
+--> 그냥 restart 할 때 else if 하고 2 입력 따로 처리 안해주고 else로 퉁쳐서 에러난거였다...
+
+- 03/30
+1. 재시작 함수 수행시, 2를 눌렀을 때 종료가 잘 되는 것 같으면서도 가끔씩 한번 종료가 안되고 계속 플레이 될 때가 있음
+--> 단순 오류인지 아니면 뭔가 잘못됐는지 모르겠음.
+--> 테스트 코드 돌려보니 잘 삭제 되는데... 흠
+--> 단순 오류인듯?
+
+2. 재시작 함수 문제가 아니라, 그냥 ExceptionInInitializerError 이거 문제인듯 하다... 이걸 어떻게 하지.
+
+3. 테스트 코드에서 IllegalArgumentException 이 예외가 뜨는데, ExceptionInInitializerError를 여기로 던져서 뜨는듯
+--> 엥 Application에서 ExceptionInInitializerError를 다시 안던지고 바로 catch 했더니 해결 됐다.
+--> 이렇게 하니까 예외 테스트 코드에서 막힘
+
+4. 예외 test에서는 IllegalArgumentException 이게 던져져야 함
+--> 던져져야 되는데 ExceptionInInitializerError여기서 캐치를 해버리니까 에러가 남
+
+- 03/31
+1. 결론적으로 ExceptionInInitializerError 에러는 싱글톤 패턴 사용할 때, 객체 얻어오는 과정에서 생성자 생성실패 문제로 초기화 안돼서 에러가 난다..
+--> 싱글톤 개체가 오류 없이 생성된다는 보장이 필요하다는데, 내가 Application에서 try-catch를 해서 예외를 잡아서 생겼나..?
+--> ExceptionInInitializerError가 왜 생겼는지 모르겠음, 처음이랑 똑같이 한거 같은데 다시 싱글톤으로 돌리니까 지금은 안생김.

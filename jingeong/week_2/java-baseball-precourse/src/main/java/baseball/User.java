@@ -1,45 +1,45 @@
 package baseball;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
-public class User {
-    private static User user = new User();
-    private Game game;
+public class User {  // 유저는 instance가 여러개인게 맞는거 같아서 싱글톤 제거
 
-    public static User getInstance() { // 싱글톤 패턴
-        if (user == null) {
-            user = new User();
-        }
-        return user;
-    }
+    private List<String> userInput;
+    private List<Integer> userInputInteger;
 
-    public List<Integer> enterUserInput() {
-        String[] userInput;
-        List<Integer> userInputInteger = new ArrayList<>();
-
-        try {
-            userInput = Console.readLine().trim().split(""); // 주어진 라이브러리 import 후 사용
-
-            userInputInteger.add(Integer.parseInt(userInput[0]));
-            userInputInteger.add(Integer.parseInt(userInput[1]));
-            userInputInteger.add(Integer.parseInt(userInput[2]));
-
-            Set<Integer> check = new LinkedHashSet<>(userInputInteger); // 중복 체크
-
-            if (userInput.length != 3) {
-                throw new IllegalArgumentException("세자리 수 입력");
-            } else if (userInputInteger.contains(0)) {
-                throw new IllegalArgumentException("범위 1~9");
-            } else if (check.size() < 3) {
-                throw new IllegalArgumentException("중복 불가");
-            }
-        } catch (Throwable t) {
-            throw new IllegalArgumentException(t);
-        }
+    public List<Integer> getUserInputInteger() {
+        enterUserInput();
         return userInputInteger;
     }
+
+    public List<String> getUserInput() {
+        return userInput;
+    }
+
+    private void enterUserInput() {
+
+        userInput = Arrays.asList(Console.readLine().trim().split("")); // 주어진 라이브러리 사용
+
+        if (Validate.isValidate(this)) {
+            stringToInteger();
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void stringToInteger() {
+        userInputInteger = new ArrayList<>();
+        try {
+            userInputInteger.add(Integer.parseInt(userInput.get(0)));
+            userInputInteger.add(Integer.parseInt(userInput.get(1)));
+            userInputInteger.add(Integer.parseInt(userInput.get(2)));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

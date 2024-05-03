@@ -1,29 +1,29 @@
 package baseball;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import javafx.scene.effect.SepiaTone;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RandomTest {
+    Computer computer = new Computer();
 
     @Test
     void bound() {
-        assertThat(Computer.getInstance().makeRandomNumber()).containsAnyElementsOf(Arrays.asList(1,2,3,4,5,6,7,8,9));
-        System.out.println(Computer.getInstance().makeRandomNumber());
+        assertThat(computer.getRandomNumber()).containsAnyElementsOf(Arrays.asList(1,2,3,4,5,6,7,8,9));
+        System.out.println(computer.getRandomNumber());
     }
 
     @Test
     void duplicated() {
-        List<Integer> random = new ArrayList<>(Computer.getInstance().makeRandomNumber());
+        ArrayList<Integer> random = new ArrayList<>(computer.getRandomNumber());
         System.out.println(random);
         Set<Integer> duple = new LinkedHashSet<>(random);
         assertThat(duple.size()).isEqualTo(random.size());
-
-
     }
 }
 
