@@ -1,8 +1,6 @@
 import domain.CourseDTO;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
+
 
 public class Course {
     private CourseDTO dto;

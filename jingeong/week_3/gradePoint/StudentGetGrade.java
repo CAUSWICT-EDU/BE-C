@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 public class StudentGetGrade {
     private StudentDTO dto;
     private CourseDTO[] course;
+    private Grade level;
 
     HashMap<Integer, String> gradeList = new LinkedHashMap<>();
 
@@ -18,18 +19,26 @@ public class StudentGetGrade {
     public void getGrade() {
         int point;
         String getGrade;
+
         for (int i = 0; i < course.length; i++) {
             point = Integer.parseInt(course[i].getPoint());
-            if (course[i].getName().equals(dto.getRequired())) {
-                Grade level = new Required(point);
-                getGrade = level.makeGrade();
-                gradeList.put(point, getGrade);
+
+            if (isRequired(i)) {
+                level = new Required(point);
+                gradeList.put(point, level.makeGrade());
             } else {
-                Grade level = new Normal(point);
-                getGrade = level.makeGrade();
-                gradeList.put(point, getGrade);
+                level = new Normal(point);
+                gradeList.put(point, level.makeGrade());
             }
         }
+
+    }
+
+    private boolean isRequired(int i) {
+        return course[i].getName().equals(dto.getRequired());
+    }
+
+    private void setGrade() {
 
     }
 

@@ -1,8 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class CourseDTO {
 
     private String point;
