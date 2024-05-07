@@ -11,7 +11,7 @@ public class Application {
         final JudgeGrade judgeGrade = new JudgeGrade();
         final Output output = new Output();
 
-        StudentTable students = input.readCSV("test.csv");
+        StudentTable students = input.readCSV("test2.csv");
         GradeTable gradePolicy = input.readPolicy("GradingPolicy.json");
 
         judgeGrade.judge(students, gradePolicy);
