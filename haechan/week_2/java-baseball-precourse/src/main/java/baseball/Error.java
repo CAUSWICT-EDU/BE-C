@@ -1,6 +1,7 @@
 package baseball;
 
 public class Error {
+
     static void stingLengthError() {
         System.out.println("입력한 수의 길이가 맞지 않아 종료합니다.");
         System.exit(0);
