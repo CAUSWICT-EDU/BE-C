@@ -12,7 +12,7 @@ public class Subject {
         subjectStudents.add(student);
     }
 
-    public void evaluGrade(){
+    public void evaluGrade(){//과목 수강생들에게 학점을 부과하는 메서드
         BasicEvaluation basicEvaluator = new BasicEvaluation();
         RequiredEvaluation requiredEvaluator=new RequiredEvaluation();
         for(Student student:subjectStudents){
@@ -33,6 +33,10 @@ public class Subject {
                 }
             }
         }
+    }
+
+    public String getSubjectName() {
+        return subjectName;
     }
 
     public ArrayList<Student> getSubjectStudents() {

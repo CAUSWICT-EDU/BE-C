@@ -41,7 +41,7 @@ public class Test {
         for (Student student : koreanSubject.getSubjectStudents()) {
             for (Grade grade : student.getGradeList()) {
                 if (grade.getSubject().equals(koreanSubject)) {
-                    System.out.println("이름: " + student.getStudentName() + " | 학번: " + student.getStudentId() + " | 과목: 국어 | 점수: " + grade.getScore() + " | 성적: " + grade.getGrade());
+                    System.out.println("이름: " + student.getStudentName() + " | 학번: " + student.getStudentId() + " | 과목: "+student.getStudentMajor().getRequiredSubject().getSubjectName()+" | 점수: " + grade.getScore() + " | 성적: " + grade.getGrade());
                 }
             }
         }
@@ -50,7 +50,7 @@ public class Test {
         for (Student student : mathSubject.getSubjectStudents()) {
             for (Grade grade : student.getGradeList()) {
                 if (grade.getSubject().equals(mathSubject)) {
-                    System.out.println("이름: " + student.getStudentName() + " | 학번: " + student.getStudentId() + " | 과목: 수학 | 점수: " + grade.getScore() + " | 성적: " + grade.getGrade());
+                    System.out.println("이름: " + student.getStudentName() + " | 학번: " + student.getStudentId() + " | 과목: "+student.getStudentMajor().getRequiredSubject().getSubjectName()+" | 점수: " + grade.getScore() + " | 성적: " + grade.getGrade());
                 }
             }
         }
