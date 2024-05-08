@@ -5,24 +5,28 @@ import java.util.ArrayList;
 
 public class Output {
 
-    public int CELLWIDTH = 8;
-    public int ROWSIZE;
-    public int COLUMNSIZE;
+    public int CELLWIDTH = 8;   // 한 셀의 칸 너비
+    public int ROWSIZE; // 열 갯수
+    public int COLUMNSIZE; // 칼럼 갯수
 
-    ArrayList<StudentInfo> students;
+    ArrayList<StudentInfo> students; // 학생 데이터 테이블
     public void printResult(StudentTable studentsTable) {
         students = studentsTable.students;
         COLUMNSIZE = studentsTable.CUSTUOM_INDEX;
         ROWSIZE = students.size();
         ArrayList<String> columnList = studentsTable.ColumnList;
+
+        // 모든 과목에 대해 반복
         for (int i=studentsTable.CUSTUOM_INDEX; i<columnList.size(); i++) {
+            // 각 과목별 학점결과 테이블 출력
             printSubjectTable( columnList.get(i) );
         }
-
     }
     void printSubjectTable(String subject) {
         printTitle(subject);
+        // 학생 수에 대해 반복
         for (int i=0; i<students.size(); i++) {
+            // 과목별 학점 결과 테아블의 열을 출력 (학생 학점 출력)
             printStudentInfo(students.get(i), subject);
         }
         System.out.println("");
@@ -32,6 +36,8 @@ public class Output {
         printCell(student.name, 1, 2, true);
         printCell(student.id, 1, 2, true);
         printCell(student.requiredSubject, 1, 2, true);
+
+        // (점수):(학점) 형식의 점수 결과 STring 생성
         String gradeResult = student.subjectScore.get(subject)+":"+student.subjectGrade.get(subject);
         printCell(gradeResult, 1, 2, false);
         System.out.println("");
@@ -47,7 +53,7 @@ public class Output {
     }
 
     void printColumn() {
-
+        // 헤당 열의 각 칼럼의 값을 출력
         printCell("이름", 1, 1, true);
         printCell("학번", 1, 1, true);
         printCell("필수과목", 1, 1, true);
@@ -86,8 +92,9 @@ public class Output {
         }
         if (end) System.out.print("|");
     }
+
     void printCellLine() {
-        int width = COLUMNSIZE*CELLWIDTH + (COLUMNSIZE-1);
+        int width = COLUMNSIZE*CELLWIDTH + (COLUMNSIZE-1); // 전체 표 넓이
         System.out.println("");
         for (int i=0; i<width; i++) System.out.print("-");
         System.out.println("");
