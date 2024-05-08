@@ -11,8 +11,8 @@ public class Application {
     //baseball.CheckAnswer.status = 0;
 
     System.out.println("게임 시작");
-
-    while (true){
+    boolean keep = true;
+    while (keep){
       Input.userAnswer();
       CheckAnswer.check();
       CheckAnswer.printResult();
