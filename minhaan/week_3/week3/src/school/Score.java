@@ -3,9 +3,7 @@ package school;
 // 학생의 성적을 나타내는 클래스
 public class Score {
     int studentID;
-    // 과목
     Subject subject;
-    // 점수
     int point;
 
     // 생성자

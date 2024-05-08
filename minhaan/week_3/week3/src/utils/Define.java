@@ -6,8 +6,8 @@ public class Define {
     public static final int KOREAN = 1001;
     // 수학 과목 코드
     public static final int MATH = 2001;
-    // AB 유형
+    // 전공 유형
     public static final int AB_TYPE = 0;
-    // SAB 유형
+    // 비전공 유형
     public static final int SAB_TYPE = 1;
 }

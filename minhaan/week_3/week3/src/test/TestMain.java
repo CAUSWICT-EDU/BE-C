@@ -20,9 +20,7 @@ public class TestMain {
     public static void main(String[] args) {
         // 테스트 클래스 인스턴스 생성
         TestMain test = new TestMain();
-        // 과목 생성
         test.createSubject();
-        // 학생 생성
         test.createStudent();
         // 성적 보고서 생성 및 출력
         String report = test.gradeReport.getReport();

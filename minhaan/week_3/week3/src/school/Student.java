@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 // 학생 클래스
 public class Student {
-    // 학생 이름
     private String studentName;
-    // 학생 학번
     private int studentID;
-    // 전공 과목
     private Subject majorSubject;
-    // 성적 목록
     private ArrayList<Score> scoreList = new ArrayList<>();
 
     // 생성자

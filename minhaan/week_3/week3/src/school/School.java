@@ -5,7 +5,7 @@ import java.util.ArrayList;
 // 학교 클래스
 public class School {
     private static School instance = new School();
-    private static String SCHOOL_NAME = "좋은 학교";
+    private static String SCHOOL_NAME = "Good School";
     // 학생 목록
     private ArrayList<Student> studentList = new ArrayList<Student>();
     // 과목 목록
