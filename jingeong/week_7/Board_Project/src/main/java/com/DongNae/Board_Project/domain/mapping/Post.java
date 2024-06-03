@@ -20,7 +20,6 @@ public class Post extends BaseEntity{
     private String title; // 게시글 제목
     private String body; // 게시글 내용
 
-    @Enumerated(EnumType.STRING)
     private boolean isUpdated; // 게시글 수정 여부
 
     @Enumerated(EnumType.STRING)
@@ -34,7 +33,7 @@ public class Post extends BaseEntity{
     @JoinColumn(name = "board_id")
     private Board board; // 속해 있는 게시판
 
-    @OneToMany(mappedBy = "issue", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     @Builder.Default
     private List<Comment> comments = new ArrayList<>(); // 달린 댓글
 
@@ -50,7 +49,7 @@ public class Post extends BaseEntity{
         board.getPosts().add(this);
     }
 
-    public void update(final String title, final String body, final String priority, final String category) {
+    public void update(final String title, final String body, final String category) {
             this.title = title;
             this.body = body;
             this.category = Category.valueOf(category);

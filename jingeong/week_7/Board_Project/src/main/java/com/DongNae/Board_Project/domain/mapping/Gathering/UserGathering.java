@@ -1,19 +1,18 @@
-package com.DongNae.Board_Project.domain.mapping;
+package com.DongNae.Board_Project.domain.mapping.Gathering;
 
+import com.DongNae.Board_Project.domain.mapping.BaseEntity;
+import com.DongNae.Board_Project.domain.mapping.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
-public class UserGathering extends BaseEntity{
+public class UserGathering extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,8 +25,8 @@ public class UserGathering extends BaseEntity{
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Board board;
+    @JoinColumn(name = "gathering_board_id")
+    private GatheringBoard gatheringBoard;
 
     public void updateIsFavorite(final boolean isFavorite) {
         this.isFavorite = isFavorite;

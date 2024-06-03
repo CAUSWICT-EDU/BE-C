@@ -1,5 +1,8 @@
-package com.DongNae.Board_Project.domain.mapping;
+package com.DongNae.Board_Project.domain.mapping.Gathering;
 
+import com.DongNae.Board_Project.domain.mapping.BaseEntity;
+import com.DongNae.Board_Project.domain.mapping.Gathering.GatheringPost;
+import com.DongNae.Board_Project.domain.mapping.User;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -15,7 +18,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
-public class GatheringBoard extends BaseEntity{
+public class GatheringBoard extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +32,11 @@ public class GatheringBoard extends BaseEntity{
     @JoinColumn(name = "admin_id")
     private User admin; // 게시판을 생성한 유저
 
-    @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "gathering_id")
+    private Gathering gathering; // 속해 있는 게시판
+
+    @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
     @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
     private List<GatheringPost> gatheringPosts = new ArrayList<>();
 

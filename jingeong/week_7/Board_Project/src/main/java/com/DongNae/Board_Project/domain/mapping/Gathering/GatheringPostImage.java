@@ -1,4 +1,4 @@
-package com.DongNae.Board_Project.domain.mapping;
+package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
 import com.DongNae.Board_Project.domain.mapping.Post;
@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
-public class PostImage extends BaseEntity {
+public class GatheringPostImage extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +25,14 @@ public class PostImage extends BaseEntity {
     private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id")
-    private Post post;
+    @JoinColumn(name = "gathering_post_id")
+    private GatheringPost gatheringPost;
 
-    public void setPostImage(Post post) {
-        if (this.post != null) {
-            this.post.getPostImages().remove(this);
+    public void setGatheringPost(GatheringPost gatheringPost) {
+        if (this.gatheringPost != null) {
+            this.gatheringPost.getGatheringPostImages().remove(this);
         }
-        this.post = post;
-        post.getPostImages().add(this);
+        this.gatheringPost = gatheringPost;
+        gatheringPost.getGatheringPostImages().add(this);
     }
 }
