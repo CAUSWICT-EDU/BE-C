@@ -3,10 +3,9 @@ package com.DongNae.Board_Project.domain.mapping;
 import com.DongNae.Board_Project.domain.Category;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.ArrayList;
@@ -15,8 +14,8 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
-public class Board extends BaseEntity{
+@AllArgsConstructor
+public class Board extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,7 +34,6 @@ public class Board extends BaseEntity{
     private Member admin; // 게시판을 생성한 유저
 
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
-    @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
     private List<Post> posts = new ArrayList<>();
 
     public void update(final String name, final String description) {

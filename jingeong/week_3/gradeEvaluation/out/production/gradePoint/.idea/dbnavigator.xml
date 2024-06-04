@@ -30,9 +30,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="c7370e07-d992-46fb-a15d-b207fbc4256e" object-ref="consoles/goodschool" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="8a52ae9b-7ac4-42b3-9619-c5b596b71ffd" />

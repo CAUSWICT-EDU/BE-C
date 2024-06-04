@@ -4,10 +4,9 @@ import com.DongNae.Board_Project.domain.mapping.BaseEntity;
 import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
+@AllArgsConstructor
 public class Gathering extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +31,6 @@ public class Gathering extends BaseEntity {
     private Member admin; // 소모임을 생성한 유저
 
     @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
     private List<GatheringBoard> gatheringBoards = new ArrayList<>();
 
     public void update(final String name, final String description) {

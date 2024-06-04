@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 // 시큐리티 일단 꺼놓기
 public class BoardProjectApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BoardProjectApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BoardProjectApplication.class, args);
+    }
 
 }

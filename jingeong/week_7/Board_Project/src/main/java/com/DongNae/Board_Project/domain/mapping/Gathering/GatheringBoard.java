@@ -4,10 +4,9 @@ import com.DongNae.Board_Project.domain.mapping.BaseEntity;
 import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import org.apache.logging.log4j.util.Strings;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
+@AllArgsConstructor
 public class GatheringBoard extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +34,8 @@ public class GatheringBoard extends BaseEntity {
     @JoinColumn(name = "gathering_id")
     private Gathering gathering; // 속해 있는 게시판
 
-    @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
-    @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
+    @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    // 게시판이 지워지면, 게시글도 같이 날라감
     private List<GatheringPost> gatheringPosts = new ArrayList<>();
 
     public void setGathering(Gathering gathering) {

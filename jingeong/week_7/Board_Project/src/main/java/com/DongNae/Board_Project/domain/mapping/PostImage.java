@@ -1,19 +1,15 @@
 package com.DongNae.Board_Project.domain.mapping;
 
-import com.DongNae.Board_Project.domain.mapping.BaseEntity;
-import com.DongNae.Board_Project.domain.mapping.Post;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
+@AllArgsConstructor
 public class PostImage extends BaseEntity {
 
     @Id

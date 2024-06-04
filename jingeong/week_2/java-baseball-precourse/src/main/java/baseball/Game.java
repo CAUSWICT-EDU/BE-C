@@ -62,6 +62,7 @@ public class Game {
         // 유저 인풋 세팅
         System.out.println("\n숫자를 입력해주세요 : ");
 
+
         input = user.getUserInputInteger();
     }
 

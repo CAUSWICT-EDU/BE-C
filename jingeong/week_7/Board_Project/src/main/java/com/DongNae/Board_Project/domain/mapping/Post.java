@@ -1,9 +1,7 @@
 package com.DongNae.Board_Project.domain.mapping;
 
-import com.DongNae.Board_Project.domain.Category;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +9,8 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
-public class Post extends BaseEntity{
+@AllArgsConstructor
+public class Post extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,8 +45,8 @@ public class Post extends BaseEntity{
     }
 
     public void update(final String title, final String body) {
-            this.title = title;
-            this.body = body;
+        this.title = title;
+        this.body = body;
         this.isUpdated = true;
         // todo :  게시글 수정 시, 수정 전 내용 보이게
     }
