@@ -34,8 +34,7 @@ public class GatheringBoard extends BaseEntity {
     @JoinColumn(name = "gathering_id")
     private Gathering gathering; // 속해 있는 게시판
 
-    @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    // 게시판이 지워지면, 게시글도 같이 날라감
+    @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<GatheringPost> gatheringPosts = new ArrayList<>();
 
     public void setGathering(Gathering gathering) {

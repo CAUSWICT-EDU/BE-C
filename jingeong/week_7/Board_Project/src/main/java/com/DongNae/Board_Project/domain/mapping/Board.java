@@ -33,7 +33,7 @@ public class Board extends BaseEntity {
     @JoinColumn(name = "admin_id")
     private Member admin; // 게시판을 생성한 유저
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
     public void update(final String name, final String description) {

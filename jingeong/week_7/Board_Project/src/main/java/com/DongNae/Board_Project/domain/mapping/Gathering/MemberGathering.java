@@ -1,6 +1,7 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
+import com.DongNae.Board_Project.domain.mapping.Board;
 import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -11,22 +12,29 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-public class UserGathering extends BaseEntity {
+public class MemberGathering extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "is_favorite")
-    private boolean isFavorite; //유저가 해당 소모임에 즐겨찾기 설정 여부
+    private boolean isFavorite = false; //유저가 해당 소모임에 즐겨찾기 설정 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gathering_board_id")
-    private GatheringBoard gatheringBoard;
+    @JoinColumn(name = "gathering_id")
+    private Gathering gathering;
+
+    public void setMemberGathering(Member member, Gathering gathering) {
+        this.member = member;
+        member.getMemberGatheringList().add(this);
+
+        this.gathering = gathering;
+        gathering.getMemberGatheringList().add(this);
+    }
 
     public void updateIsFavorite(final boolean isFavorite) {
         this.isFavorite = isFavorite;

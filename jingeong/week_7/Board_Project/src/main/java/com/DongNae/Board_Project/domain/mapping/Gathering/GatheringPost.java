@@ -34,12 +34,10 @@ public class GatheringPost extends BaseEntity {
     @JoinColumn(name = "gathering_board_id")
     private GatheringBoard gatheringBoard; // 속해 있는 게시판
 
-    @OneToMany(mappedBy = "gatheringPost", cascade = CascadeType.REMOVE)
-    @Builder.Default
+    @OneToMany(mappedBy = "gatheringPost", cascade = CascadeType.ALL)
     private List<GatheringComment> gatheringComments = new ArrayList<>(); // 달린 댓글
 
-    @OneToMany(mappedBy = "gatheringPost", cascade = CascadeType.REMOVE)
-    @Builder.Default
+    @OneToMany(mappedBy = "gatheringPost", cascade = CascadeType.ALL)
     private List<GatheringPostImage> gatheringPostImages = new ArrayList<>(); // 게시글에 달 이미지
 
     public void setGatheringBoard(GatheringBoard gatheringBoard) {

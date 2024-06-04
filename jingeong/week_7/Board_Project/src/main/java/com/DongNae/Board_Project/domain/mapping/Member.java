@@ -1,10 +1,14 @@
 package com.DongNae.Board_Project.domain.mapping;
 
+import com.DongNae.Board_Project.domain.mapping.Gathering.MemberGathering;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,6 +24,9 @@ public class Member extends BaseEntity {
 
     private String password;
     private String username;
+
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<MemberGathering> memberGatheringList = new ArrayList<>();
 
     // todo : 어떤 게시판일지 주제 잡고, 필요한 column 더 추가하기
 }

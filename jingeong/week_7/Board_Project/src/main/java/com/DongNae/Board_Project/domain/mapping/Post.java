@@ -28,12 +28,10 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "board_id")
     private Board board; // 속해 있는 게시판
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    @Builder.Default
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>(); // 달린 댓글
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    @Builder.Default
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<PostImage> postImages = new ArrayList<>(); // 게시글에 달 이미지
 
     public void setBoard(Board board) {
