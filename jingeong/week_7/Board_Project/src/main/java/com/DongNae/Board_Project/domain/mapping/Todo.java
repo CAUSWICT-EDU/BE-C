@@ -20,5 +20,5 @@ public class Todo extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user; // 게시판을 생성한 유저
+    private Member member; // todo를 생성한 유저
 }

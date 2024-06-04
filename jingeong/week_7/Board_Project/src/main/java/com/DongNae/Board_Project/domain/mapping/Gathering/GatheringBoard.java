@@ -1,8 +1,7 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
-import com.DongNae.Board_Project.domain.mapping.Gathering.GatheringPost;
-import com.DongNae.Board_Project.domain.mapping.User;
+import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -30,7 +29,7 @@ public class GatheringBoard extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
-    private User admin; // 게시판을 생성한 유저
+    private Member admin; // 게시판을 생성한 유저
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gathering_id")
@@ -39,6 +38,14 @@ public class GatheringBoard extends BaseEntity {
     @OneToMany(mappedBy = "gatheringBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
     @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
     private List<GatheringPost> gatheringPosts = new ArrayList<>();
+
+    public void setGathering(Gathering gathering) {
+        if (this.gathering != null) {
+            this.gathering.getGatheringBoards().remove(this);
+        }
+        this.gathering = gathering;
+        gathering.getGatheringBoards().add(this);
+    }
 
     public void update(final String name, final String description) {
         if (Strings.isNotEmpty(name)) { // 게시판 이름에 빈 문자열이면 업데이트 하지 않음

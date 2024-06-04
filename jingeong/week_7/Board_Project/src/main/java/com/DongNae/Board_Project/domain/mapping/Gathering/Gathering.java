@@ -1,8 +1,7 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
-import com.DongNae.Board_Project.domain.mapping.Gathering.GatheringPost;
-import com.DongNae.Board_Project.domain.mapping.User;
+import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -30,9 +29,9 @@ public class Gathering extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
-    private User admin; // 소모임을 생성한 유저
+    private Member admin; // 소모임을 생성한 유저
 
-    @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
+    @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @Builder.Default // 빌더 사용시 초기화 무시 현상 해소
     private List<GatheringBoard> gatheringBoards = new ArrayList<>();
 

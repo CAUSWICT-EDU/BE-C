@@ -22,12 +22,9 @@ public class Post extends BaseEntity{
 
     private boolean isUpdated; // 게시글 수정 여부
 
-    @Enumerated(EnumType.STRING)
-    private Category category;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
-    private User writer; // 작성자
+    private Member writer; // 작성자
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
@@ -49,12 +46,11 @@ public class Post extends BaseEntity{
         board.getPosts().add(this);
     }
 
-    public void update(final String title, final String body, final String category) {
+    public void update(final String title, final String body) {
             this.title = title;
             this.body = body;
-            this.category = Category.valueOf(category);
-
         this.isUpdated = true;
+        // todo :  게시글 수정 시, 수정 전 내용 보이게
     }
 
 }

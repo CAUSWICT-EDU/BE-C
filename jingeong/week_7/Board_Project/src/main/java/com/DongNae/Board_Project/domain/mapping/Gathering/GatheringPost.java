@@ -2,7 +2,7 @@ package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.Category;
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
-import com.DongNae.Board_Project.domain.mapping.User;
+import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -29,7 +29,7 @@ public class GatheringPost extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
-    private User writer; // 작성자
+    private Member writer; // 작성자
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gathering_board_id")

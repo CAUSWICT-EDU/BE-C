@@ -1,7 +1,7 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
 import com.DongNae.Board_Project.domain.mapping.BaseEntity;
-import com.DongNae.Board_Project.domain.mapping.User;
+import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class GatheringComment extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
-    private User writer;
+    private Member writer;
 
     public void setGatheringPost(GatheringPost gatheringPost) {
         if (this.gatheringPost != null) {

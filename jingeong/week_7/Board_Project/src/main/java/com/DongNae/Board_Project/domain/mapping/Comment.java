@@ -2,13 +2,9 @@ package com.DongNae.Board_Project.domain.mapping;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -27,7 +23,7 @@ public class Comment extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "writer_id")
-    private User writer;
+    private Member writer;
 
     public void setPost(Post post) {
         if (this.post != null) {
@@ -40,4 +36,5 @@ public class Comment extends BaseEntity {
     public void update(final String content) {
         this.content = content;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.DongNae.Board_Project.domain.mapping;
 
+import com.DongNae.Board_Project.domain.Category;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -25,9 +26,13 @@ public class Board extends BaseEntity{
 
     private String description; // 게시판에 대한 간단한 설명
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
+
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
-    private User admin; // 게시판을 생성한 유저
+    private Member admin; // 게시판을 생성한 유저
 
     @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE) // 게시판이 지워지면, 게시글도 같이 날라감
     @Builder.Default // 빌더 사용시 초기화 무시 현상 해소

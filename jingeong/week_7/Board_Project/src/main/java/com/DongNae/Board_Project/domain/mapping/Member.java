@@ -10,8 +10,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
 @Entity
-@Table(name = "'user'")
-public class User extends BaseEntity{
+public class Member extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; // DB 상 식별 id
@@ -22,5 +21,5 @@ public class User extends BaseEntity{
     private String password;
     private String username;
 
-
+    // todo : 어떤 게시판일지 주제 잡고, 필요한 column 더 추가하기
 }
