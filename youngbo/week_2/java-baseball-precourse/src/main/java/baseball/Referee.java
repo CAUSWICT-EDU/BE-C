@@ -23,6 +23,9 @@ public class Referee {
     }
     try {
       answerStorage = Integer.parseInt(input);
+      if (answerStorage < 100) {
+        throw new IllegalArgumentException("0을 입력할 수 없습니다."); //맨 첫 자리에 0이 오는 경우
+      }
     } catch (NumberFormatException e) { //3글자 중 문자가 있다면 오류 발생
       throw new IllegalArgumentException("문자가 입력되었습니다. 올바른 값을 입력해주세요.\n");
     }
@@ -38,6 +41,10 @@ public class Referee {
     if (userAnswer[0] == userAnswer[1] || userAnswer[1] == userAnswer[2]  //중복 숫자가 있다면 오류 발생
         || userAnswer[2] == userAnswer[0]) {
       throw new IllegalArgumentException("입력 중 중복인 숫자가 있습니다. 올바른 값을 입력해주세요.\n");
+    }
+
+    if (userAnswer[1] == 0 || userAnswer[2] == 0) { //2, 3번째 자리에 0이 있다면 오류 발생
+      throw new IllegalArgumentException("0을 입력할 수 없습니다.\n");
     }
   }
 
