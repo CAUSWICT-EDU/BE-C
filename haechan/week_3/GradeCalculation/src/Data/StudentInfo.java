@@ -13,4 +13,6 @@ public class StudentInfo {
     public HashMap<String, Integer> subjectScore = new HashMap<>(); // 과목별 점수
     public HashMap<String, Character> subjectGrade = new HashMap<>(); // 과목별 학점
 
+
+
 }

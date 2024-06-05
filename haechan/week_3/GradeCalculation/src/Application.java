@@ -15,7 +15,7 @@ public class Application {
         final Output output = new Output();
 
         // 학생 데이터 불러오기
-        StudentTable students = input.readCSV("test2.csv");
+        StudentTable students = input.readCSV("test.csv");
 
         // 학점 정책 데이터 불러오기
         GradeTable gradePolicy = input.readPolicy("GradingPolicy.json");
