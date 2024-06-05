@@ -28,13 +28,6 @@ public class MemberGathering extends BaseEntity {
     @JoinColumn(name = "gathering_id")
     private Gathering gathering;
 
-    public void setMemberGathering(Member member, Gathering gathering) {
-        this.member = member;
-        member.getMemberGatheringList().add(this);
-
-        this.gathering = gathering;
-        gathering.getMemberGatheringList().add(this);
-    }
 
     public void updateIsFavorite(final boolean isFavorite) {
         this.isFavorite = isFavorite;

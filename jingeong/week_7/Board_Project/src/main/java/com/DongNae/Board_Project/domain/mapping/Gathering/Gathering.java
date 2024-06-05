@@ -30,9 +30,6 @@ public class Gathering extends BaseEntity {
     @JoinColumn(name = "admin_id")
     private Member admin; // 소모임을 생성한 유저
 
-    @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<MemberGathering> memberGatheringList = new ArrayList<>();
-
     @OneToMany(mappedBy = "gathering", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<GatheringBoard> gatheringBoards = new ArrayList<>();
 

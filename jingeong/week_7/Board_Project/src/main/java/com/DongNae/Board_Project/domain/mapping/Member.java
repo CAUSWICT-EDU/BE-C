@@ -25,8 +25,8 @@ public class Member extends BaseEntity {
     private String password;
     private String username;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List<MemberGathering> memberGatheringList = new ArrayList<>();
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    List<Todo> todoList = new ArrayList<>();
 
     // todo : 어떤 게시판일지 주제 잡고, 필요한 column 더 추가하기
 }
