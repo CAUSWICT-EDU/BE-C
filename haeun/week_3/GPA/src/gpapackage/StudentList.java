@@ -55,20 +55,20 @@ import java.util.List;
 //}
 
 public class StudentList {
-  private List<Student> students;
+  private List<Student> studentlist;
 
   public StudentList() {
-    students = new ArrayList<>();
+    studentlist = new ArrayList<>();
   }
   public void loadStudentData(String fileName) {
     try {
-      Scanner scanner = new Scanner(new File(fileName));
+      Scanner scanner = new Scanner(new File(fileName)); //파일 받아오기
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine().trim();
         if (line.startsWith("이름")) {
           continue;
         }
-        String[] data = line.split("\t");
+        String[] data = line.split("\t"); // 학생 정보 파싱하기 (라인 파싱)
         String name = data[0];
         int studentId = Integer.parseInt(data[1]);
         String major = data[2];
@@ -76,26 +76,26 @@ public class StudentList {
         int mathScore = Integer.parseInt(data[4]);
         int koreanScore = Integer.parseInt(data[5]);
 
-        Student student = new Student(name, studentId, major);
-        student.addSubject(new GeneralSubject("수학", mathScore));
-        student.addSubject(new GeneralSubject("국어", koreanScore));
+        Student student = new Student(name, studentId, major); // 학생 객체 생성
 
-        if (requiredSubjectName.equals("수학")) {
+        if(requiredSubjectName == "수학"){
           student.addSubject(new RequiredSubject("수학", mathScore));
-        } else if (requiredSubjectName.equals("국어")) {
+          student.addSubject(new GeneralSubject("국어", koreanScore));
+        }
+        else{
           student.addSubject(new RequiredSubject("국어", koreanScore));
+          student.addSubject(new GeneralSubject("수학", mathScore));
         }
 
-        students.add(student);
+        studentlist.add(student); //스튜던트리스트에 학생 정보 추가
       }
       scanner.close();
     } catch (FileNotFoundException e) {
       System.out.println("파일을 찾을 수 없습니다: " + fileName);
     }
   }
-
   public List<Student> getStudents() {
-    return students;
+    return studentlist;
   }
 }
 

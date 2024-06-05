@@ -32,18 +32,13 @@ public class GPACalculator {
     List<Student> students = studentList.getStudents();
 
     System.out.println("국어 수강생 학점");
-    System.out.println("이름 : 학번 : 중요과목 : 점수 : 학점");
+    System.out.println("이름 : 학번 : 필수과목 : 점수 : 학점");
     System.out.println("---------------------------------------");
 
     for (Student student : students) {
       List<Subject> subjects = student.getSubjects();
-      Subject koreanSubject = null;
-      for (Subject subject : subjects) {
-        if (subject.getSubjectName().equals("국어")) {
-          koreanSubject = subject;
-          break;
-        }
-      }
+      Subject koreanSubject = null; //이거가 어케 가능??
+
       if (koreanSubject != null) {
         System.out.printf("%s : %d : %s : %d : %s%n",
             student.getName(), student.getStudentId(), "국어",
