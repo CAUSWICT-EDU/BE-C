@@ -51,5 +51,4 @@ public class Post extends BaseEntity {
         this.isUpdated = true;
         // todo :  게시글 수정 시, 수정 전 내용 보이게
     }
-
 }
