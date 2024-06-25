@@ -1,5 +1,6 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
+import com.DongNae.Board_Project.domain.BaseEntity;
 import com.DongNae.Board_Project.domain.mapping.Member;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -38,4 +39,3 @@ public class GatheringComment extends BaseEntity {
         this.content = content;
     }
 }
-

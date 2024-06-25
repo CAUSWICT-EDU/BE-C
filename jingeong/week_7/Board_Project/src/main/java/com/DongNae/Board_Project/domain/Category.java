@@ -4,4 +4,3 @@ public enum Category {
     STUDY, LOVE, LIFE
 
 }
-

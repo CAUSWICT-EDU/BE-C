@@ -31,5 +31,3 @@ public class PostImage extends BaseEntity {
         post.getPostImages().add(this);
     }
 }
-
-

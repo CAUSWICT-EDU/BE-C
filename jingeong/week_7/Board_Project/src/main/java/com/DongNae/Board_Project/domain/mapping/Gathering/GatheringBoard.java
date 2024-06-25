@@ -53,4 +53,3 @@ public class GatheringBoard extends BaseEntity {
         this.description = description; // 설명은 완전히 없애기 가능
     }
 }
-

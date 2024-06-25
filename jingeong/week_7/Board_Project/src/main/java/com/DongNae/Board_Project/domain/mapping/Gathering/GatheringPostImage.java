@@ -1,5 +1,6 @@
 package com.DongNae.Board_Project.domain.mapping.Gathering;
 
+import com.DongNae.Board_Project.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,4 +31,3 @@ public class GatheringPostImage extends BaseEntity {
         gatheringPost.getGatheringPostImages().add(this);
     }
 }
-

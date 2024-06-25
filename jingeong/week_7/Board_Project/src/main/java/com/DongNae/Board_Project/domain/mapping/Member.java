@@ -27,4 +27,3 @@ public class Member extends BaseEntity {
 
     // todo : 어떤 게시판일지 주제 잡고, 필요한 column 더 추가하기
 }
-
