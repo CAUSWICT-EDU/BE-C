@@ -39,3 +39,4 @@ public class GatheringComment extends BaseEntity {
         this.content = content;
     }
 }
+

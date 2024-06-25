@@ -31,3 +31,4 @@ public class GatheringPostImage extends BaseEntity {
         gatheringPost.getGatheringPostImages().add(this);
     }
 }
+
