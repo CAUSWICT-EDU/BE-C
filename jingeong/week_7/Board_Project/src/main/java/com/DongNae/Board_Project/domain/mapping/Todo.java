@@ -1,5 +1,6 @@
 package com.DongNae.Board_Project.domain.mapping;
 
+import com.DongNae.Board_Project.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

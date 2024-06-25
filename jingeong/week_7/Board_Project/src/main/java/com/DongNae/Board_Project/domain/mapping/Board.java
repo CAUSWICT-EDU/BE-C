@@ -1,5 +1,6 @@
 package com.DongNae.Board_Project.domain.mapping;
 
+import com.DongNae.Board_Project.domain.BaseEntity;
 import com.DongNae.Board_Project.domain.Category;
 import jakarta.persistence.*;
 import lombok.AccessLevel;

@@ -1,4 +1,4 @@
-package com.DongNae.Board_Project.domain.mapping;
+package com.DongNae.Board_Project.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
