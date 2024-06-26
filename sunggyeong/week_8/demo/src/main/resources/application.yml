@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/study
+    username: root
+    password: 1569
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        ddl-auto: create
+        default_batch_fetch_size: 1000
+logging:
+  file:
+    name: logs/spring-boot-application.log
+  level:
+    org.springframework: DEBUG
+
