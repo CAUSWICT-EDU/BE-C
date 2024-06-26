@@ -1,3 +1,4 @@
+
 package com.DongNae.Board_Project.domain;
 
 import jakarta.persistence.EntityListeners;
